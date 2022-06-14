@@ -1,8 +1,9 @@
+import NavBar from "./components/NavBar";
+import Main from "./layouts/Main";
+
 function App() {
   return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
+    <Main />
   );
 }
 

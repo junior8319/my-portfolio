@@ -6,20 +6,21 @@ const NavBar = styled.nav`
   margin: 0;
   align-items: center;
   justify-content: space-around;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
   a {
     text-decoration: none;
-    height: 80%;
+    padding: 5px;
+    margin: 5px;
   };
   a: hover {
     text-decoration: none;
     color: #fff;
     transition: 1s;
   };
-  height: 40px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 1;
 `;
 
 export default NavBar;

@@ -4,10 +4,13 @@ const Container = styled.section`
   width: 98%;
   position: relative;
   top: 60px;
-  border: 0.5px solid #FAC887;
   border-radius: 10px;
   display: flex;
   margin: 10px auto;
+
+  @media (max-width: 550px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export default Container;

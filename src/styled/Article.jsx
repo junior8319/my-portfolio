@@ -5,6 +5,13 @@ const Article = styled.article`
   padding: 20px 10px;
   background-color: #ffffff15;
   border-radius: 10px;
+  flex-grow: 1;
+
+  @media (max-width: 400px) {
+    align-self: center;
+    margin: auto;
+    justify-self: center;
+  }
 `;
 
 export default Article;

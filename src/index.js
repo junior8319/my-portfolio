@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import GlobalStyle from './styled/GlobalStyle';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ContactMe from './pages/ContactMe';
+import Projects from './pages/Projects';
+import Articles from './pages/Articles';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <GlobalStyle />
-    <App />
-  </React.StrictMode>
+    <Routes>
+      <Route path="/" element={ <App /> }/>
+      <Route path="/contact-me" element={ <ContactMe /> } />
+      <Route path="/projects" element={ <Projects /> } />
+      <Route path="/articles" element={ <Articles /> } />
+      <Route path="*" element={ <div>404</div> } />
+    </Routes>
+  </BrowserRouter>
 );

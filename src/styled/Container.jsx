@@ -3,12 +3,12 @@ import styled from 'styled-components';
 const Container = styled.section`
   width: 98%;
   position: relative;
-  top: 60px;
+  top: 55px;
   border-radius: 10px;
   display: flex;
-  margin: 10px auto;
+  margin: 0 auto;
 
-  @media (max-width: 550px) {
+  @media (max-width: 700px) {
     flex-wrap: wrap;
   }
 `;

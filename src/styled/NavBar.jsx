@@ -18,6 +18,7 @@ const NavBar = styled.nav`
   height: 40px;
   width: 100%;
   position: fixed;
+  z-index: 1;
 `;
 
 export default NavBar;

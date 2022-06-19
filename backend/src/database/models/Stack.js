@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
     },
     imageUrl: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       defaultValue: '',
     },
     description: {

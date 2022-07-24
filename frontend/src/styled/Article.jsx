@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Article = styled.article`
   width: 70%;
-  padding: 20px 10px;
+  padding: 20px;
   background-color: #ffffff15;
   border-radius: 10px;
   flex-grow: 1;

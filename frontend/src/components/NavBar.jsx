@@ -10,6 +10,7 @@ const NavBar = () => {
         <Link to="/contact-me">Contato</Link>
         <Link to="/articles">Artigos</Link>
         <Link to="/projects">Projetos</Link>
+        <Link to="/administrator">Administrador</Link>
     </StyledNavBar>
   );
 }

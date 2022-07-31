@@ -10,28 +10,11 @@ const getAllStacks = async () => {
   return stacks.map(stack => stack);
 };
 
-const createStack = async ({
-  title,
-  description,
-  imageUrl,
-  stackDocsUrl,
-  stackUrl,
-}) => {
-  const newStack = await Stack.create({
-    title,
-    description,
-    imageUrl,
-    stackDocsUrl,
-    stackUrl,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  })
-
+const createStack = async (stack) => {
+  const newStack = await Stack.create(stack);
   if (!newStack) {
     return null;
   }
-
-  console.log(newStack);
 
   return newStack;
 };

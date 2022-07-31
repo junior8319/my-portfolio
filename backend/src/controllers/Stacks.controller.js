@@ -17,6 +17,23 @@ const getAllStacks = async (_req, res) => {
   }
 };
 
+const createStack = async (req, res) => {
+  try {
+    const newStack = await stacksService.createStack(req.body);
+    if (!newStack) {
+      return res.status(400).json({
+        message: 'Stack not created',
+      });
+    }
+
+    return res.status(201).json({ message: 'Salvo com sucesso.', stack: newStack });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 module.exports = {
   getAllStacks,
+  createStack,
 };

@@ -10,6 +10,16 @@ const getAllStacks = async () => {
   return stacks.map(stack => stack);
 };
 
+const createStack = async (stack) => {
+  const newStack = await Stack.create(stack);
+  if (!newStack) {
+    return null;
+  }
+
+  return newStack;
+};
+
 module.exports = {
   getAllStacks,
+  createStack,
 };

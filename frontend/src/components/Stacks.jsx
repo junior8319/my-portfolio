@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import getStacks from '../helpers/stacksApi';
+import { getStacks } from '../helpers/stacksApi';
 import Article from '../styled/Article';
 import { Title1 } from '../styled/Titles';
 

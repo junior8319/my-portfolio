@@ -15,8 +15,7 @@ const createStack = async (stack) => {
   if (!newStack) {
     return null;
   }
-
-  return newStack;
+  return newStack.dataValues;
 };
 
 const findStackById = async (id) => {

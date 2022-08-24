@@ -1,16 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import StacksContext from '../../context/StacksContext';
 import { requestStackRegister } from '../../helpers/stacksApi';
 
 const StacksForm = () => {
-  const { stacks, setStacks } = useContext(StacksContext);
-  const [stack, setStack] = useState({
-    title: '',
-    description: '',
-    stackDocsUrl: '',
-    imageUrl: '',
-    stackUrl: '',
-  });
+  const { stacks, setStacks, stack, setStack } = useContext(StacksContext);
 
   const handleChange = ({ target: { name, value } }) => {
     setStack({ ...stack, [name]: value });

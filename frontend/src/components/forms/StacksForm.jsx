@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import StacksContext from '../../context/StacksContext';
 import { requestStackRegister } from '../../helpers/stacksApi';
 
 const StacksForm = () => {
+  const { stacks, setStacks } = useContext(StacksContext);
   const [stack, setStack] = useState({
     title: '',
     description: '',
@@ -73,12 +75,10 @@ const StacksForm = () => {
       <input
         type="button"
         value="Salvar"
-        onClick={ () => requestStackRegister({
-          body: stack,
-          method: 'POST',
-          url: '/stacks',
-          origin: 'http://localhost:3000',
-        }) }
+        onClick={ () => {
+          requestStackRegister(stack)
+            .then((data) => setStacks([...stacks, data]));
+        }}
       />
     </form>
   );

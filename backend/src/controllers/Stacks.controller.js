@@ -25,8 +25,7 @@ const createStack = async (req, res) => {
         message: 'Stack not created',
       });
     }
-
-    return res.status(201).json({ message: 'Salvo com sucesso.', stack: newStack });
+    return res.status(201).json({ message: 'Successfully created stack.', stack: newStack });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Internal server error' });

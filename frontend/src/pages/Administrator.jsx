@@ -18,17 +18,7 @@ const Administrator = () => {
       <Container>
         <Article>
           <Title1>Administrador</Title1>
-          {
-            !isUpdating
-            ?
-            (
-              <StacksForm />
-            )
-            :
-            (
-              <Title2>Atualizando uma habilidade.</Title2>
-            )
-          }
+          { !isUpdating && <StacksForm /> }
           <StacksTable />
         </Article>
       </Container>

@@ -5,7 +5,7 @@ import StacksTable from '../components/tables/StacksTable';
 // import StacksProvider from '../context/StacksProvider';
 import Article from '../styled/Article';
 import Container from '../styled/Container';
-import { Title1, Title2 } from '../styled/Titles';
+import { Title1 } from '../styled/Titles';
 import { useContext } from 'react';
 import StacksContext from '../context/StacksContext';
 

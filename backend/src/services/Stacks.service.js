@@ -25,13 +25,14 @@ const findStackById = async (id) => {
     return null;
   }
 
-  return stack;
+  return stack.dataValues;
 };
 
 const updateStack = async (id, stack) => {
   const stackToUpdate = await findStackById(id);
+  if (!stackToUpdate) return null;
 
-  const updatedStack = await stackToUpdate.update(stack);
+  const updatedStack = await Stack.update(stack, { where: { id: id } });
 
   if (!updatedStack) {
     return null;
@@ -42,8 +43,9 @@ const updateStack = async (id, stack) => {
 
 const deleteStack = async (id) => {
   const stackToDelete = await findStackById(id);
+  if (!stackToDelete) return null;
 
-  const deletedStack = await stackToDelete.destroy();
+  const deletedStack = await Stack.destroy({ where: { id: id } });
 
   if (!deletedStack) {
     return null;

@@ -17,6 +17,23 @@ const getAllStacks = async (_req, res) => {
   }
 };
 
+const getStackById = async(req, res) => {
+  try {
+    const stack = await stacksService.findStackById(req.params.id);
+
+    if (!stack) {
+      return res.status(404).json({
+        message: 'Stack not found',
+      });
+    }
+
+    return res.status(200).json(stack);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 const createStack = async (req, res) => {
   try {
     const newStack = await stacksService.createStack(req.body);
@@ -35,7 +52,7 @@ const createStack = async (req, res) => {
 const updateStack = async (req, res) => {
   try {
     const stackToUpdate = await stacksService.findStackById(req.params.id);
-    const updatedStack = await stacksService.update(stackToUpdate.id, req.body);
+    const updatedStack = await stacksService.updateStack(stackToUpdate.id, req.body);
 
     if (!updatedStack) {
       return res.status(400).json({
@@ -70,6 +87,7 @@ const deleteStack = async (req, res) => {
 
 module.exports = {
   getAllStacks,
+  getStackById,
   createStack,
   updateStack,
   deleteStack,

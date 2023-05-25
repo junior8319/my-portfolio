@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Verdana', sans-serif;
     color: #11203B;
   };
-  *: hover {
+  *:hover {
     color: #488AFA;
     transition: 1s;
   }

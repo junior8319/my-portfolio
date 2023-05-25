@@ -13,8 +13,6 @@ const Stacks = () => {
 
   useEffect(() => {}, [stacks]);
 
-  console.log(stacks);
-
   return (
     <Article>
       <Title1>Ferramentas que conheço:</Title1>

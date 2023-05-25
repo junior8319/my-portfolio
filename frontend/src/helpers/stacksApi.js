@@ -12,6 +12,17 @@ const getStacks = async () => {
   }
 };
 
+const getStackById = async (id) => {
+  try {
+    const stack = await fetch(`${API_URL}/stacks/${id}`);
+    const stackJson = await stack.json();
+    return stackJson;
+  } catch (error) {
+    console.log(error);
+    return new Error(`Something went wrong. Error: ${error}`);
+  }
+};
+
 const requestStackRegister = (receivedData) => {
   try {
     const options = {
@@ -36,17 +47,53 @@ const requestStackRegister = (receivedData) => {
   }
 };
 
-const updateStackRequest = async (receivedData) => {
+const updateStackRequest = async (receivedId, updatedStack) => {
   try {
-    const httpRequest = new XMLHttpRequest();
-    if (httpRequest) {
-      httpRequest.open(receivedData.method, API_URL + receivedData.url);
-      httpRequest.setRequestHeader('Content-Type', 'application/json');
-      httpRequest.setRequestHeader('Accept', 'application/json');
-      httpRequest.setRequestHeader('Access-Control-Allow-Origin', receivedData.origin);
-      httpRequest.send(JSON.stringify(receivedData.body));
+    const stackToUpdate = await getStackById(receivedId);
+    if (!stackToUpdate) {
+      return `Não foi possível encontrar registro com o ID: ${receivedId}`;
     }
-    
+
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify(updatedStack),
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': API_ORIGIN,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    };
+
+    const response = await fetch(`${API_URL}/stacks/${receivedId}`, options);
+
+    return response;    
+  } catch (error) {
+    console.log(error);
+    return new Error(`Something went wrong. Error: ${error}`);
+  }
+};
+
+const deleteStackRequest = async (receivedId) => {
+  try {
+    const stackToDelete = await getStackById(receivedId);
+    if (!stackToDelete) {
+      return `Não foi possível encontrar registro com o ID: ${receivedId}`;
+    }
+
+    const options = {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Access-Control-Allow-Origin': API_ORIGIN,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    };
+
+    const response = await fetch(`${API_URL}/stacks/${receivedId}`, options);
+
+    return response;    
   } catch (error) {
     console.log(error);
     return new Error(`Something went wrong. Error: ${error}`);
@@ -56,6 +103,8 @@ const updateStackRequest = async (receivedData) => {
 
 export {
   getStacks,
+  getStackById,
   requestStackRegister,
   updateStackRequest,
+  deleteStackRequest,
 };

@@ -1,16 +1,22 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import StacksContext from '../../context/StacksContext';
 import { requestStackRegister } from '../../helpers/stacksApi';
 
 const StacksForm = () => {
-  const { stacks, setStacks } = useContext(StacksContext);
-  const [stack, setStack] = useState({
+  const {
+    stacks,
+    stack,
+    isUpdating,
+    setStacks,
+    setStack,
+  } = useContext(StacksContext);
+  const initialStack = ({
     title: '',
     description: '',
     stackDocsUrl: '',
     imageUrl: '',
     stackUrl: '',
-  });
+  })
 
   const handleChange = ({ target: { name, value } }) => {
     setStack({ ...stack, [name]: value });
@@ -71,15 +77,21 @@ const StacksForm = () => {
         name="stackUrl"
         onChange={handleChange}
       />
-
-      <input
-        type="button"
-        value="Salvar"
-        onClick={ () => {
-          requestStackRegister(stack)
-            .then((data) => setStacks([...stacks, data]));
-        }}
-      />
+      {
+        !isUpdating && (
+          <input
+            type="button"
+            value="Salvar"
+            onClick={ () => {
+              requestStackRegister(stack)
+                .then((data) => {
+                  setStacks([...stacks, data])
+                  setStack(initialStack);
+              });
+            }}
+          />
+        )
+      }
     </form>
   );
 }

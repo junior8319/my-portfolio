@@ -8,6 +8,7 @@ import ContactMe from './pages/ContactMe';
 import Projects from './pages/Projects';
 import Articles from './pages/Articles';
 import Administrator from './pages/Administrator';
+import StacksProvider from './context/StacksProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,7 +19,7 @@ root.render(
       <Route path="/contact-me" element={ <ContactMe /> } />
       <Route path="/projects" element={ <Projects /> } />
       <Route path="/articles" element={ <Articles /> } />
-      <Route path="/administrator" element={ <Administrator />} />
+      <Route path="/administrator" element={ <StacksProvider><Administrator /></StacksProvider>} />
       <Route path="*" element={ <div>404</div> } />
     </Routes>
   </BrowserRouter>

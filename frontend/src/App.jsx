@@ -1,7 +1,7 @@
 import NavBar from "./components/NavBar";
 import Container from "./styled/Container";
 import picture from './assets/images/rsz_eu-de-mamae-to-forte-2.jpg';
-import NormalPicture from "./styled/Pictures";
+import { NormalPicture } from "./styled/Pictures";
 import Welcome from "./components/Welcome";
 import Stacks from "./components/Stacks";
 

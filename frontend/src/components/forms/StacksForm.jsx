@@ -38,8 +38,10 @@ const StacksForm = () => {
       <label htmlFor="description-input">
         Descrição:
       </label>
-      <input
+      <textarea
         type="textarea" id="description-input"
+        cols={ 30 }
+        rows={ 3 }
         value={ stack.description }
         name="description"
         onChange={handleChange}

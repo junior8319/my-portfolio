@@ -21,3 +21,14 @@ export const Title2 = styled.h2`
     width: 100%;
   }
 `;
+
+export const Title3 = styled.h3`
+  font-size: 1.0rem;
+  background: none;
+  padding: 10px 0;
+
+  @media (max-width: 400px) {
+    font-size: 0.85rem;
+    width: 100%;
+  }
+`;

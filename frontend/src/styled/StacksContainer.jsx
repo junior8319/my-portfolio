@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
-const Container = styled.section`
+const StacksContainer = styled.section`
   width: 98%;
-  height: 90vh;
-  position: relative;
-  top: 55px;
+  height: 90%;
   border-radius: 10px;
   display: flex;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  margin: 0;
 
   article:hover {
     background-color: #0000ff20;
@@ -15,8 +14,8 @@ const Container = styled.section`
   }
 
   @media (max-width: 700px) {
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
   }
 `;
 
-export default Container;
+export default StacksContainer;

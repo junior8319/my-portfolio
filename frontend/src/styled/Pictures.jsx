@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const NormalPicture = styled.img`
-  max-width: 175px;
+  max-width: 200px;
   max-height: 250px;
   background: none;
   border-radius: 10px;

@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import Article from '../styled/Article';
 import { Title2, Title3 } from '../styled/Titles';
 import { CardPicture } from '../styled/Pictures';
 import { SimpleP } from '../styled/Paragraphs';
-import Container from '../styled/Container';
+import ControlBar from '../styled/ControlBar';
+import Content from '../styled/Content';
+import StacksContainer from '../styled/StacksContainer';
+import ControlButton from '../styled/ControlButton';
 
 const Carousel = ({ cards, intervalTime }) => {
   const FIRST_CARD_INDEX = 0;
@@ -45,10 +47,10 @@ const Carousel = ({ cards, intervalTime }) => {
   }, [currentCard, goToNextCard, intervalTime]);
 
   return (
-    <Container>
+    <StacksContainer>
       {
         (cards && cards.length > 0) &&
-          <Article key={cards[currentCard].id}>
+          <Content key={cards[currentCard].id}>
             <Title2>{ cards[currentCard].title }</Title2>
             <CardPicture src={ cards[currentCard].imageUrl } alt={ cards[currentCard].title } />
             
@@ -63,39 +65,39 @@ const Carousel = ({ cards, intervalTime }) => {
             <a href={ cards[currentCard].stackUrl } target="_blank" rel="noopener noreferrer">
               <SimpleP>{ cards[currentCard].stackUrl }</SimpleP>
             </a>
-          </Article>
+          </Content>
       }
 
-      <div>
-        <button
+      <ControlBar>
+        <ControlButton
           type="button"
           onClick={() => goToFirstCard()}
         >
-          Primeiro
-        </button>
+          Primeira
+        </ControlButton>
 
-        <button
+        <ControlButton
           type="button"
           onClick={() => goToPreviousCard()}
         >
           Anterior
-        </button>
+        </ControlButton>
 
-        <button
+        <ControlButton
           type="button"
           onClick={() => goToNextCard()}
         >
-          Próximo
-        </button>
+          Próxima
+        </ControlButton>
 
-        <button
+        <ControlButton
           type="button"
           onClick={() => goToLastCard()}
         >
-          Último
-        </button>
-      </div>
-    </Container>
+          Última
+        </ControlButton>
+      </ControlBar>
+    </StacksContainer>
   );
 }
 

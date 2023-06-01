@@ -17,7 +17,7 @@ const Stacks = () => {
   return (
     <Article>
       <Title1>Ferramentas que conheço:</Title1>
-      <Carousel cards={ stacks } intervalTime={ 15000 } />
+      <Carousel cards={ stacks } intervalTime={ 30000 } />
     </Article>
   );
 };

@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 const Content = styled.article`
   overflow: auto;
-  width: 98%;
+  width: 100%;
   height: 87%;
-  padding: 5px;
+  padding: 6px;
   background-color: #ffffff15;
   border-radius: 10px;
   margin: 0;

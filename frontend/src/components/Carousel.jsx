@@ -5,7 +5,7 @@ import { SimpleP } from '../styled/Paragraphs';
 import ControlBar from '../styled/ControlBar';
 import Content from '../styled/Content';
 import StacksContainer from '../styled/StacksContainer';
-import ControlButton from '../styled/ControlButton';
+import { ControlButton } from '../styled/Buttons';
 
 const Carousel = ({ cards, intervalTime }) => {
   const FIRST_CARD_INDEX = 0;

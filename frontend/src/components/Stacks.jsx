@@ -3,6 +3,7 @@ import { getStacks } from '../helpers/stacksApi';
 import Article from '../styled/Article';
 import { Title1 } from '../styled/Titles';
 import Carousel from './Carousel';
+import Loading from './Loading';
 
 const Stacks = () => {
   const [stacks, setStacks] = useState([]);
@@ -13,6 +14,14 @@ const Stacks = () => {
   }, []);
 
   useEffect(() => {}, [stacks]);
+
+  if (!stacks || stacks.length === 0) {
+    return (
+      <Article>
+        <Loading />
+      </Article>
+    );
+  }
 
   return (
     <Article>

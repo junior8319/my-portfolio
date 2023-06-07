@@ -5,3 +5,8 @@ export const Label = styled.label`
   width: 95%;
   background-color: transparent;
 `;
+
+export const Span = styled.span`
+  font-size: 1.3rem;
+  color: #f59a9a;
+`;

@@ -46,3 +46,31 @@ export const validateMessage = (receivedMsgString) => {
   :
     'Esta não é uma mensagem válida, favor redigir com palavras legíveis.';
 };
+
+export const validateToEnableSubmission = (errors, messageObject) => {
+  const errorKeys = Object.keys(errors);
+
+  errorKeys.forEach(key => {
+    if (messageObject[key].length === 0 && errors[key].required) {
+      errors = {
+        ...errors,
+        [key]: {
+          ...errors[key],
+          error: `Este campo é de preenchimento obrigatório`,
+        } 
+      };
+    }
+    
+    if (key === 'phone' && messageObject[key].length === 0) {
+      errors = {
+        ...errors,
+        [key]: {
+          ...errors[key],
+          error: '',
+        } 
+      };
+    }
+  });
+
+  return errors;
+};

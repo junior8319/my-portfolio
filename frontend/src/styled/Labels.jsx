@@ -9,4 +9,5 @@ export const Label = styled.label`
 export const Span = styled.span`
   font-size: 1.3rem;
   color: #f59a9a;
+  background-color: transparent;
 `;

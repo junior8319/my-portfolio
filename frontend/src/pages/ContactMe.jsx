@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import NavBar from '../components/NavBar';
 import Container from '../styled/Container';
 import { FormContainer, FormDiv100 } from '../styled/Form';
@@ -7,7 +7,13 @@ import { Title1 } from '../styled/Titles';
 import Article from '../styled/Article';
 import { Input, TextArea } from '../styled/Inputs';
 import { SaveButton } from '../styled/Buttons';
-import { validateEmail, validateMessage, validateName, validatePhone } from '../services/validateForm';
+import {
+  validateEmail,
+  validateMessage,
+  validateName,
+  validatePhone,
+  validateToEnableSubmission
+} from '../services/validateForm';
 import { SimpleP } from '../styled/Paragraphs';
 
 const ContactMe = () => {
@@ -18,11 +24,15 @@ const ContactMe = () => {
     message: '',
   };
 
+  const initialErrors = {
+  name:{ error: '', required: true },
+  email: { error: '', required: true },
+  phone: { error: '', required: false },
+  message: { error: '', required: true },
+  };
+
   const [messageObj, setMessageObj] = useState(initialMsgObj);
-  const [nameError, setNameError] = useState({error: '', required: true });
-  const [emailError, setEmailError] = useState({error: '', required: true });
-  const [phoneError, setPhoneError] = useState({error: '', required: false });
-  const [messageError, setMsgError] = useState({error: '', required: true });
+  const [errorsObj, setErrorsObj] = useState(initialErrors);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -39,25 +49,21 @@ const ContactMe = () => {
     }
   };
 
-  useEffect(() => {
-    if (messageObj.name) {
-      setNameError({ error: validateName(messageObj.name) });
-    }
-
-    if (messageObj.email) {
-      setEmailError({ error: validateEmail(messageObj.email) });
-    }
-
-    if (messageObj.phone && messageObj.phone.length > 0) {
-      setPhoneError({ error: validatePhone(messageObj.phone) });
-    } else {
-      setPhoneError({ error: '' });
-    }
-
-    if (messageObj.message) {
-      setMsgError({ error: validateMessage(messageObj.message) });
-    }
-  }, [messageObj.email, messageObj.message, messageObj.name, messageObj.phone]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    setErrorsObj(
+      validateToEnableSubmission(
+        {
+          name: errorsObj.name,
+          email: errorsObj.email,
+          phone: errorsObj.phone,
+          message: errorsObj.message,
+        },
+        messageObj,
+      )
+    );
+  };
 
   return (
     <Container>
@@ -78,21 +84,24 @@ const ContactMe = () => {
               placeholder='Seu nome aqui...'
               value={ messageObj.name }
               required
-              onChange={(event) => {
-                handleInputChange(event);
-                setNameError({ error: validateName(messageObj.name) });
-              }}
+              onChange={(event) => handleInputChange(event) }
+              onKeyUp={ () => {
+                setErrorsObj({
+                  ...errorsObj,
+                  name: { ...errorsObj.name, error: validateName(messageObj.name) }
+                });
+              } }
             />
-            { nameError.required &&
+            { errorsObj.name.required &&
               <Span>*</Span>
             }
           </FormDiv100>
-          { nameError.error.length > 0 &&
+          { errorsObj.name.error.length > 0 &&
             <FormDiv100
               padding={ '0 10px' }
               margin={ '0 3px' }
             >
-              <SimpleP color={ '#f59a9a' }>{ nameError.error }</SimpleP>
+              <SimpleP color={ '#f59a9a' }>{ errorsObj.name.error }</SimpleP>
             </FormDiv100>
           }
 
@@ -108,16 +117,19 @@ const ContactMe = () => {
               placeholder='seuEndereço@dominio.com'
               value={ messageObj.email }
               required
-              onChange={ (event) => {
-                handleInputChange(event);
-                setEmailError({ error: validateEmail(messageObj.email) });
+              onChange={ (event) => handleInputChange(event) }
+              onKeyUp={ () => {
+                setErrorsObj({
+                  ...errorsObj,
+                  email: { ...errorsObj.email, error: validateEmail(messageObj.email) }
+                });
               } }
             />
-            { emailError.required &&
+            { errorsObj.email.required &&
               <Span>*</Span>
             }
           </FormDiv100>
-          { emailError.error.length > 0 &&
+          { errorsObj.email.error.length > 0 &&
             <FormDiv100
               padding={ '0 10px' }
               margin={ '0 3px' }
@@ -127,7 +139,7 @@ const ContactMe = () => {
                 padding={ '0' }
                 width={ '90%' }
               >
-                { emailError.error }
+                { errorsObj.email.error }
               </SimpleP>
             </FormDiv100>
           }
@@ -141,18 +153,23 @@ const ContactMe = () => {
             <Input
               id='phone'
               name='phone'
+              placeholder='(ddd com 2 dígitos) + número...(digite somente números)'
               mask='(99) 99999-9999999'
+              maskChar={ null }
               value={ messageObj.phone }
-              onChange={ (event) => {
-                handleInputChange(event);
-                setPhoneError({ error: validatePhone(messageObj.phone) });
+              onChange={ (event) => handleInputChange(event) }
+              onKeyUp={ () => {
+                setErrorsObj({
+                  ...errorsObj,
+                  phone: { ...errorsObj.phone, error: validatePhone(messageObj.phone) }
+                });
               } }
             />
-            { phoneError.required &&
+            { errorsObj.phone.required &&
               <Span>*</Span>
             }
           </FormDiv100>
-          { phoneError.error.length > 0 &&
+          { errorsObj.phone.error.length > 0 &&
             <FormDiv100
               padding={ '0 10px' }
               margin={ '0 3px' }
@@ -162,7 +179,7 @@ const ContactMe = () => {
                 padding={ '0' }
                 width={ '90%' }
               >
-                { phoneError.error }
+                { errorsObj.phone.error }
               </SimpleP>
             </FormDiv100>
           }
@@ -176,18 +193,22 @@ const ContactMe = () => {
               rows={ 10 }
               id='message'
               name='message'
+              placeholder='Digite sua mensagem...'
               value={ messageObj.message }
               required
-              onChange={ (event) => {
-                handleInputChange(event);
-                setMsgError({ error: validateMessage(messageObj.message) });
+              onChange={ (event) => handleInputChange(event) }
+              onKeyUp={ () => {
+                setErrorsObj({
+                  ...errorsObj,
+                  message: { ...errorsObj.message, error: validateMessage(messageObj.message) }
+                });
               } }
             />
-            { messageError.required &&
+            { errorsObj.message.required &&
               <Span>*</Span>
             }
           </FormDiv100>
-          { messageError.error.length > 0 &&
+          { errorsObj.message.error.length > 0 &&
             <FormDiv100
               padding={ '0 10px' }
               margin={ '0 3px' }
@@ -197,7 +218,7 @@ const ContactMe = () => {
                 padding={ '0' }
                 width={ '90%' }
               >
-                { messageError.error }
+                { errorsObj.message.error }
               </SimpleP>
             </FormDiv100>
           }
@@ -209,6 +230,7 @@ const ContactMe = () => {
             <SaveButton
               type='button'
               value={ 'Enviar' }
+              onClick={ (event) => handleSubmit(event) }
             />
           </FormDiv100>
         </FormContainer>

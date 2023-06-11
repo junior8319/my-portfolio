@@ -81,7 +81,7 @@ export const verifyErrorsAlertShowing = (errorsObject, messageObject) => {
   const errorsKeys = Object.keys(errorsObject);
 
   const response = errorsKeys.some(key => {
-    if (messageObject[key].required && messageObject[key].length === 0) return true;
+    if (errorsObject[key].required && messageObject[key].length === 0) return true;
 
     if (errorsObject[key].error.length > 0) return true;
 

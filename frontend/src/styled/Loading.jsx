@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const StyledLoading = styled.div`
-  font-size: 32px;
+  font-size: ${props => props.fontSize || '32px' };
+  border: ${props => props.border || ''};;
   text-align: center;
-  margin-top: 35vh;
+  margin-top: ${props => props.marginTop || '35vh'};
+  margin-bottom: ${props => props.marginBottom || ''};
+  height: ${props => props.height || ''};
   color: #000;
   animation: colorChange 2.90s infinite;
   background-color: transparent;
@@ -43,7 +46,7 @@ export const StyledLoading = styled.div`
 `;
 
 export const BiggerLetter = styled.span`
-  font-size: 52px;
+  font-size: ${props => props.fontSize || '52px'};
   margin: 0;
   color: #371a0b;
   background-color: transparent;

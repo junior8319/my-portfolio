@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from '../components/NavBar';
 import Container from '../styled/Container';
 import { FormContainer, FormDiv100 } from '../styled/Form';
@@ -6,15 +6,18 @@ import { Label, Span } from '../styled/Labels';
 import { Title1 } from '../styled/Titles';
 import Article from '../styled/Article';
 import { Input, TextArea } from '../styled/Inputs';
-import { SaveButton } from '../styled/Buttons';
+import { CancelButton, SaveButton } from '../styled/Buttons';
 import {
   validateEmail,
   validateMessage,
   validateName,
   validatePhone,
-  validateToEnableSubmission
+  validateToEnableSubmission,
+  verifyErrorsAlertShowing
 } from '../services/validateForm';
 import { SimpleP } from '../styled/Paragraphs';
+import { sendEmail } from '../helpers/contactApi';
+import Loading from '../components/Loading';
 
 const ContactMe = () => {
   const initialMsgObj = {
@@ -33,6 +36,10 @@ const ContactMe = () => {
 
   const [messageObj, setMessageObj] = useState(initialMsgObj);
   const [errorsObj, setErrorsObj] = useState(initialErrors);
+  const [submissionEnabled, enableSubmission] = useState(true);
+  const [isSending, setIsSending] = useState(false);
+  const [sendingStatus, setSendingStatus] = useState('');
+  const [sendingStatusMsg, setSendingStatusMessage] = useState('');
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -49,22 +56,53 @@ const ContactMe = () => {
     }
   };
 
+  const monitorSendingStatus = (status) => {
+    if (status.length === 0) return '';
+    
+    if (status === 'OK') {
+      return 'Obrigado pelo seu contato, retornarei em breve.';
+    } else {
+      return `Lamento, não foi possível enviar seu contato. \n ${status}`;
+    }
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     
     setErrorsObj(
       validateToEnableSubmission(
-        {
-          name: errorsObj.name,
-          email: errorsObj.email,
-          phone: errorsObj.phone,
-          message: errorsObj.message,
-        },
+        errorsObj,
         messageObj,
       )
     );
+  
+    if (submissionEnabled) {
+      setIsSending(true);
+      
+      sendEmail(messageObj)
+      .then((response) => setSendingStatus(response))
+      .catch((response) => setSendingStatus(response))
+      .finally(() => {
+        setIsSending(false);
+        setMessageObj(initialMsgObj);
+      });
+    }
   };
 
+  useEffect(() => {
+    if (sendingStatus.length > 0) {
+      setSendingStatusMessage(monitorSendingStatus(sendingStatus));
+    } else {
+      setSendingStatusMessage('');
+    }
+
+    (verifyErrorsAlertShowing(errorsObj, messageObj))
+    ?
+      enableSubmission(false)
+    :
+      enableSubmission(true)
+  }, [errorsObj, messageObj, sendingStatus]);
+ 
   return (
     <Container>
       <NavBar />
@@ -227,11 +265,41 @@ const ContactMe = () => {
             padding={ '0 10px' }
             margin={ '0 3px' }
           >
-            <SaveButton
-              type='button'
-              value={ 'Enviar' }
-              onClick={ (event) => handleSubmit(event) }
-            />
+            { (sendingStatusMsg && sendingStatusMsg.length > 0) &&
+              <FormDiv100>
+                <SimpleP
+                  color={ (sendingStatus === 'OK') ? '#13890f' : '#f59a9a' }
+                >
+                  { sendingStatusMsg }
+                </SimpleP>
+                
+                <CancelButton
+                  type='button'
+                  value={ 'Fechar' }
+                  onClick={ () => setSendingStatus('') }
+                />
+              </FormDiv100>
+            }
+
+            { isSending
+              ?
+              <FormDiv100>
+                <Loading
+                  word={ 'Enviando...' }
+                  marginTop={ '10px' }
+                  marginBottom={ '10px' }
+                  height={ '60px' }
+                  width={ '90%' }
+                  fontSize={ '24px' }
+                />
+              </FormDiv100>
+              :
+              <SaveButton
+                type='button'
+                value={ 'Enviar' }
+                onClick={ (event) => handleSubmit(event) }
+              />
+            }
           </FormDiv100>
         </FormContainer>
       </Article>

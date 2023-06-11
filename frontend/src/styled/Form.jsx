@@ -10,6 +10,7 @@ export const FormDiv100 = styled.div`
   color: #e1dbdb90;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   
   &:hover {
     background-color: #0000ff20;

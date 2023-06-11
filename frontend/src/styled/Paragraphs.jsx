@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const SimpleP = styled.p`
-  font-size: 0.9rem;
+  color: ${props => props.color || ""};
+  font-size: ${props => props.size || "0.9rem"};
   background: none;
-  width: 65%;
-  padding: 10px 0;
+  width: ${props => props.width || "85%"};
+  padding: ${props => props.padding || "10px 0"};
 
   @media (max-width: 400px) {
     font-size: 0.7rem;

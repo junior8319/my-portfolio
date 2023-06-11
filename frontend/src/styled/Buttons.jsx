@@ -22,12 +22,22 @@ export const SaveButton = styled.input`
   padding: 10px;
   border-radius: 10px;
   width: 100px;
-  background-color: #13890f60;
-  color: #e1dbdb90;
+  background-color: #13890f;
+  color: #e1dbdb;
+
+  &:disabled {
+    background-color: #13890f30;
+    color: #e1dbdb30;
+  }
   
   &:hover {
-    background-color: #13890f;
-    color: #e1dbdb;
+    background-color: #e1dbdb;
+    color: #13890f;
+    
+    &:disabled {
+      background-color: #e1dbdb20;
+      color: #13890f60;
+    }
   }
 `;
 

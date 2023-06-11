@@ -11,6 +11,8 @@ export const validateName = (receivedNameString) => {
 };
 
 export const validatePhone = (receivedPhone) => {
+  if (receivedPhone.length === 0) return '';
+
   const VALID_NUMBER = /[0-9]{9,14}/gm;
   const IS_VALID = VALID_NUMBER.test(receivedPhone);
 
@@ -73,4 +75,18 @@ export const validateToEnableSubmission = (errors, messageObject) => {
   });
 
   return errors;
+};
+
+export const verifyErrorsAlertShowing = (errorsObject, messageObject) => {
+  const errorsKeys = Object.keys(errorsObject);
+
+  const response = errorsKeys.some(key => {
+    if (messageObject[key].required && messageObject[key].length === 0) return true;
+
+    if (errorsObject[key].error.length > 0) return true;
+
+    return false;
+  });
+
+  return response;
 };

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { BiggerLetter, StyledLoading } from '../styled/Loading';
 
-const Loading = () => {
-  const WORD = 'Carregando...';
+const Loading = (props) => {
+  const { word, marginTop, height, width, border, marginBottom, fontSize } = props;
+
+  const WORD = (word && word.length > 0) ? word : 'Carregando...';
   const [loadingText, setLoadingText] = useState('');
   const [nextLetter, setNextLetter] = useState('');
   const [index, setIndex] = useState(0);
@@ -27,11 +29,18 @@ const Loading = () => {
     }, 200);
 
     return () => clearInterval(interval);
-  }, [index]);
+  }, [WORD, index]);
 
 
   return (
-    <StyledLoading>
+    <StyledLoading
+      marginTop={ marginTop }
+      height={ height }
+      width={ width }
+      border={ border }
+      marginBottom={ marginBottom }
+      fontSize={ fontSize }
+    >
       { loadingText }
       <BiggerLetter>
         { (nextLetter && nextLetter.length > 0) ? nextLetter : ' ' }

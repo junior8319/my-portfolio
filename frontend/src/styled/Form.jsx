@@ -44,6 +44,11 @@ export const FormDiv30 = styled.div`
     background-color: #0000ff20;
     color: #e1dbdb;
   }
+
+  @media (max-width: 1100px) {
+    flex-wrap: wrap;
+    width: 45%;
+  }
 `;
 
 export const FormDiv25 = styled.div`
@@ -57,6 +62,11 @@ export const FormDiv25 = styled.div`
   &:hover {
     background-color: #0000ff20;
     color: #e1dbdb;
+  }
+
+  @media (max-width: 1100px) {
+    flex-wrap: wrap;
+    width: 45%;
   }
 `;
 

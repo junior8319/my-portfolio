@@ -15,6 +15,10 @@ export const Input = styled(InputMask)`
     background-color: #47425f;
     color: #e1dbdb;
   }
+
+  @media (max-width: 1100px) {
+    font-size: 0.85rem;
+  }
 `;
 
 export const TextArea = styled.textarea`
@@ -30,5 +34,9 @@ export const TextArea = styled.textarea`
   &:hover {
     background-color: #47425f;
     color: #e1dbdb;
+  }
+
+  @media (max-width: 1100px) {
+    font-size: 0.85rem;
   }
 `;

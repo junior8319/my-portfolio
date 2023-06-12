@@ -25,6 +25,10 @@ export const Row = styled.tr`
   width: 100%;
   /* margin: 0; */
   /* padding: 0; */
+
+  @media (max-width: 1100px) {
+    font-size: 0.75rem;
+  }
 `;
 
 export const Col = styled.td`
@@ -56,6 +60,11 @@ export const ColUpdateBtn = styled.button`
     background-color: #e1dbdb;
     color: #bc6412;
   }
+
+  @media (max-width: 1100px) {
+    font-size: 0.65rem;
+    width: 85%;
+  }
 `;
 
 export const ColDeleteteBtn = styled.button`
@@ -69,5 +78,10 @@ export const ColDeleteteBtn = styled.button`
   &:hover {
     background-color: #e1dbdb;
     color: #89250f;
+  }
+
+  @media (max-width: 1100px) {
+    font-size: 0.65rem;
+    width: 85%;
   }
 `;

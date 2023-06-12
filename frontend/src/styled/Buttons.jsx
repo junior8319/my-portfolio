@@ -13,6 +13,11 @@ export const ControlButton = styled.button`
     background-color: #b9d6f4;
     color: #47425f;
   }
+
+  @media (max-width: 1100px) {
+    font-size: 0.7rem;
+    width: 75px;
+  }
 `;
 
 export const SaveButton = styled.input`
@@ -24,20 +29,15 @@ export const SaveButton = styled.input`
   width: 100px;
   background-color: #13890f;
   color: #e1dbdb;
-
-  &:disabled {
-    background-color: #13890f30;
-    color: #e1dbdb30;
-  }
   
   &:hover {
     background-color: #e1dbdb;
     color: #13890f;
-    
-    &:disabled {
-      background-color: #e1dbdb20;
-      color: #13890f60;
-    }
+  }
+
+  @media (max-width: 1100px) {
+    font-size: 0.7rem;
+    width: 75px;
   }
 `;
 
@@ -54,5 +54,10 @@ export const CancelButton = styled.input`
   &:hover {
     background-color: #89250f;
     color: #e1dbdb;
+  }
+
+  @media (max-width: 1100px) {
+    font-size: 0.7rem;
+    width: 75px;
   }
 `;

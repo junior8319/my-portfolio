@@ -73,28 +73,28 @@ const Carousel = ({ cards, intervalTime }) => {
           type="button"
           onClick={() => goToFirstCard()}
         >
-          Primeira
+          { '|<' }
         </ControlButton>
 
         <ControlButton
           type="button"
           onClick={() => goToPreviousCard()}
         >
-          Anterior
+          { '<' }
         </ControlButton>
 
         <ControlButton
           type="button"
           onClick={() => goToNextCard()}
         >
-          Próxima
+          { '>' }
         </ControlButton>
 
         <ControlButton
           type="button"
           onClick={() => goToLastCard()}
         >
-          Última
+          { '>|' }
         </ControlButton>
       </ControlBar>
     </StacksContainer>

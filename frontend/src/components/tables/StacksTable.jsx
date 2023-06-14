@@ -6,7 +6,7 @@ import { CancelButton, SaveButton } from '../../styled/Buttons';
 import {
   Col,
   ColBtnDiv,
-  ColDeleteteBtn,
+  ColDeleteBtn,
   ColUpdateBtn,
   HeadCol,
   Row,
@@ -97,7 +97,7 @@ const StacksTable = () => {
                         href={stackUrl}
                         color={ '#488AFA' }
                         target={'_blank'}
-                        >
+                      >
                         {stackUrl}
                       </Link>
                     </Col>
@@ -123,12 +123,9 @@ const StacksTable = () => {
                         >
                           Alterar
                         </ColUpdateBtn>
-                      </ColBtnDiv>
-                    </Col>
-
-                    <Col>
-                      <ColBtnDiv>
-                        <ColDeleteteBtn
+                      {/* </ColBtnDiv> */}
+                      {/* <ColBtnDiv> */}
+                        <ColDeleteBtn
                           onClick={
                             () => deleteStackRequest(stack.id)
                             .then(() => {
@@ -137,7 +134,7 @@ const StacksTable = () => {
                           }
                         >
                           Excluir
-                        </ColDeleteteBtn>
+                        </ColDeleteBtn>
                       </ColBtnDiv>
                     </Col>
 

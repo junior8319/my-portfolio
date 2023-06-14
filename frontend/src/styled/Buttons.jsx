@@ -16,7 +16,8 @@ export const ControlButton = styled.button`
 
   @media (max-width: 1100px) {
     font-size: 0.7rem;
-    width: 75px;
+    padding: 5px;
+    width: 70px;
   }
 `;
 

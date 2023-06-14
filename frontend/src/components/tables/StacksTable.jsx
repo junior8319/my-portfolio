@@ -88,11 +88,11 @@ const StacksTable = () => {
               if (!isUpdating || stackIdUpdating !== stack.id) {
                 return (
                   <Row key={ `${id}#$%${title}` }>
-                    <Col>{id}</Col>
+                    <Col data-label='ID: '>{id}</Col>
 
-                    <Col>{title}</Col>
+                    <Col data-label='Título: '>{title}</Col>
 
-                    <Col>
+                    <Col data-label='Página: '>
                       <Link
                         href={stackUrl}
                         color={ '#488AFA' }
@@ -102,7 +102,7 @@ const StacksTable = () => {
                       </Link>
                     </Col>
 
-                    <Col>
+                    <Col data-label='Documentação: '>
                       <Link
                         href={stackDocsUrl}
                         color={ '#488AFA' }
@@ -116,7 +116,7 @@ const StacksTable = () => {
 
                     <Col>{updatedAt}</Col>
 
-                    <Col>
+                    <Col data-label='Ações: '>
                       <ColBtnDiv>
                         <ColUpdateBtn
                           onClick={() => selectToUpdate(stack)}

@@ -11,11 +11,7 @@ export const FormDiv100 = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  
-  &:hover {
-    background-color: #0000ff20;
-    color: #e1dbdb;
-  }
+  justify-content: center;
 `;
 
 export const FormDiv50 = styled.div`
@@ -25,11 +21,6 @@ export const FormDiv50 = styled.div`
   width: 45%;
   background-color: transparent;
   color: #e1dbdb90;
-  
-  &:hover {
-    background-color: #0000ff20;
-    color: #e1dbdb;
-  }
 `;
 
 export const FormDiv30 = styled.div`
@@ -39,11 +30,6 @@ export const FormDiv30 = styled.div`
   width: 28%;
   background-color: transparent;
   color: #e1dbdb90;
-  
-  &:hover {
-    background-color: #0000ff20;
-    color: #e1dbdb;
-  }
 
   @media (max-width: 1100px) {
     flex-wrap: wrap;
@@ -58,11 +44,6 @@ export const FormDiv25 = styled.div`
   width: 22%;
   background-color: transparent;
   color: #e1dbdb90;
-  
-  &:hover {
-    background-color: #0000ff20;
-    color: #e1dbdb;
-  }
 
   @media (max-width: 1100px) {
     flex-wrap: wrap;
@@ -76,5 +57,6 @@ export const FormContainer = styled.form`
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
 `;

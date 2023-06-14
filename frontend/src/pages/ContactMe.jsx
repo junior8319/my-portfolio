@@ -112,9 +112,14 @@ const ContactMe = () => {
         <FormContainer>
           <FormDiv100
             padding={ '0 10px' }
-            margin={ '0 3px' }
+            margin={ '1px auto' }
           >
-            <Label htmlFor='name'>Nome:</Label>
+            <Label htmlFor='name'>
+              Nome:
+              { errorsObj.name.required &&
+                <Span>*</Span>
+              }
+            </Label>
 
             <Input
               id='name'
@@ -130,14 +135,12 @@ const ContactMe = () => {
                 });
               } }
             />
-            { errorsObj.name.required &&
-              <Span>*</Span>
-            }
           </FormDiv100>
+
           { errorsObj.name.error.length > 0 &&
             <FormDiv100
               padding={ '0 10px' }
-              margin={ '0 3px' }
+              margin={ '1px auto' }
             >
               <SimpleP color={ '#f59a9a' }>{ errorsObj.name.error }</SimpleP>
             </FormDiv100>
@@ -145,14 +148,19 @@ const ContactMe = () => {
 
           <FormDiv100
             padding={ '0 10px' }
-            margin={ '0 3px' }
+            margin={ '1px auto' }
           >
-            <Label htmlFor='email'>E-mail:</Label>
+            <Label htmlFor='email'>
+              E-mail:
+              { errorsObj.email.required &&
+                <Span>*</Span>
+              }
+            </Label>
 
             <Input
               id='email'
               name='email'
-              placeholder='seuEndereço@dominio.com'
+              placeholder='ex.: seuEndereço@dominio.com'
               value={ messageObj.email }
               required
               onChange={ (event) => handleInputChange(event) }
@@ -163,30 +171,27 @@ const ContactMe = () => {
                 });
               } }
             />
-            { errorsObj.email.required &&
-              <Span>*</Span>
-            }
           </FormDiv100>
+
           { errorsObj.email.error.length > 0 &&
             <FormDiv100
               padding={ '0 10px' }
-              margin={ '0 3px' }
+              margin={ '1px auto' }
             >
-              <SimpleP
-                color={ '#f59a9a' }
-                padding={ '0' }
-                width={ '90%' }
-              >
-                { errorsObj.email.error }
-              </SimpleP>
+              <SimpleP color={ '#f59a9a' }>{ errorsObj.email.error }</SimpleP>
             </FormDiv100>
           }
 
           <FormDiv100
             padding={ '0 10px' }
-            margin={ '0 3px' }
+            margin={ '1px auto' }
           >
-            <Label htmlFor='phone'>Telefone:</Label>
+            <Label htmlFor='phone'>
+              Telefone:
+              { errorsObj.phone.required &&
+                <Span>*</Span>
+              }
+            </Label>
 
             <Input
               id='phone'
@@ -203,30 +208,30 @@ const ContactMe = () => {
                 });
               } }
             />
-            { errorsObj.phone.required &&
-              <Span>*</Span>
-            }
           </FormDiv100>
+
           { errorsObj.phone.error.length > 0 &&
             <FormDiv100
               padding={ '0 10px' }
-              margin={ '0 3px' }
+              margin={ '1px auto' }
             >
-              <SimpleP
-                color={ '#f59a9a' }
-                padding={ '0' }
-                width={ '90%' }
-              >
-                { errorsObj.phone.error }
-              </SimpleP>
+              <SimpleP color={ '#f59a9a' }>{ errorsObj.phone.error }</SimpleP>
             </FormDiv100>
           }
 
           <FormDiv100
             padding={ '0 10px' }
-            margin={ '0 3px' }
+            margin={ '1px auto' }
           >
-            <Label>Mensagem:</Label>
+            <Label
+              htmlFor='message'
+            >
+              Mensagem:
+              { errorsObj.message.required &&
+                <Span>*</Span>
+              }
+            </Label>
+            
             <TextArea
               rows={ 10 }
               id='message'
@@ -242,28 +247,20 @@ const ContactMe = () => {
                 });
               } }
             />
-            { errorsObj.message.required &&
-              <Span>*</Span>
-            }
           </FormDiv100>
+
           { errorsObj.message.error.length > 0 &&
             <FormDiv100
               padding={ '0 10px' }
-              margin={ '0 3px' }
+              margin={ '1px auto' }
             >
-              <SimpleP
-                color={ '#f59a9a' }
-                padding={ '0' }
-                width={ '90%' }
-              >
-                { errorsObj.message.error }
-              </SimpleP>
+              <SimpleP color={ '#f59a9a' }>{ errorsObj.message.error }</SimpleP>
             </FormDiv100>
           }
 
           <FormDiv100
             padding={ '0 10px' }
-            margin={ '0 3px' }
+            margin={ '1px auto' }
           >
             { (sendingStatusMsg && sendingStatusMsg.length > 0) &&
               <FormDiv100>

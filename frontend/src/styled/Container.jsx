@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const Container = styled.section`
   background-color: ${props => props.backGround};
   width: 98%;
-  height: 90vh;
   position: relative;
   top: 55px;
   border-radius: 10px;

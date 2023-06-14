@@ -6,7 +6,7 @@ import { CancelButton, SaveButton } from '../../styled/Buttons';
 import {
   Col,
   ColBtnDiv,
-  ColDeleteteBtn,
+  ColDeleteBtn,
   ColUpdateBtn,
   HeadCol,
   Row,
@@ -88,21 +88,21 @@ const StacksTable = () => {
               if (!isUpdating || stackIdUpdating !== stack.id) {
                 return (
                   <Row key={ `${id}#$%${title}` }>
-                    <Col>{id}</Col>
+                    <Col data-label='ID: '>{id}</Col>
 
-                    <Col>{title}</Col>
+                    <Col data-label='Título: '>{title}</Col>
 
-                    <Col>
+                    <Col data-label='Página: '>
                       <Link
                         href={stackUrl}
                         color={ '#488AFA' }
                         target={'_blank'}
-                        >
+                      >
                         {stackUrl}
                       </Link>
                     </Col>
 
-                    <Col>
+                    <Col data-label='Documentação: '>
                       <Link
                         href={stackDocsUrl}
                         color={ '#488AFA' }
@@ -116,19 +116,16 @@ const StacksTable = () => {
 
                     <Col>{updatedAt}</Col>
 
-                    <Col>
+                    <Col data-label='Ações: '>
                       <ColBtnDiv>
                         <ColUpdateBtn
                           onClick={() => selectToUpdate(stack)}
                         >
                           Alterar
                         </ColUpdateBtn>
-                      </ColBtnDiv>
-                    </Col>
-
-                    <Col>
-                      <ColBtnDiv>
-                        <ColDeleteteBtn
+                      {/* </ColBtnDiv> */}
+                      {/* <ColBtnDiv> */}
+                        <ColDeleteBtn
                           onClick={
                             () => deleteStackRequest(stack.id)
                             .then(() => {
@@ -137,7 +134,7 @@ const StacksTable = () => {
                           }
                         >
                           Excluir
-                        </ColDeleteteBtn>
+                        </ColDeleteBtn>
                       </ColBtnDiv>
                     </Col>
 

@@ -10,6 +10,11 @@ export const NormalPicture = styled.img`
   right: 0;
   box-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
 
+  @media (max-width: 1100px) {
+    max-width: 125px;
+    max-height: 150px;
+  }
+
   @media (max-width: 700px) {
     justify-self: center;
     text-align: center;
@@ -25,6 +30,10 @@ export const CardPicture = styled.img`
   background: none;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+
+  @media (max-width: 1100px) {
+    width: 75px;
+  }
 
   @media (max-width: 700px) {
     justify-self: center;

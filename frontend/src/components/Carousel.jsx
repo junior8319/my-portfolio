@@ -6,6 +6,8 @@ import ControlBar from '../styled/ControlBar';
 import Content from '../styled/Content';
 import StacksContainer from '../styled/StacksContainer';
 import { ControlButton } from '../styled/Buttons';
+import { InnerContent } from '../styled/Container';
+import Link from '../styled/Link';
 
 const Carousel = ({ cards, intervalTime }) => {
   const FIRST_CARD_INDEX = 0;
@@ -51,20 +53,35 @@ const Carousel = ({ cards, intervalTime }) => {
       {
         (cards && cards.length > 0) &&
           <Content key={cards[currentCard].id}>
-            <Title2>{ cards[currentCard].title }</Title2>
-            <CardPicture src={ cards[currentCard].imageUrl } alt={ cards[currentCard].title } />
+            <InnerContent>
+              <Title2>{ cards[currentCard].title }</Title2>
+              <CardPicture src={ cards[currentCard].imageUrl } alt={ cards[currentCard].title } />
+            </InnerContent>
             
-            <SimpleP>{ cards[currentCard].description }</SimpleP>
+            <InnerContent
+              padding={ '15px 5px 30px 5px' }
+            >
+              <SimpleP padding={ '0 0 0 10px' } width={ '95%' }>{ cards[currentCard].description }</SimpleP>
+            </InnerContent>
             
-            <Title3>Documentação:</Title3>
-            <a href={ cards[currentCard].stackDocsUrl } target="_blank" rel="noopener noreferrer">
-              <SimpleP>{ cards[currentCard].stackDocsUrl }</SimpleP>
-            </a>
-            
-            <Title3>Página da Ferramenta:</Title3>
-            <a href={ cards[currentCard].stackUrl } target="_blank" rel="noopener noreferrer">
-              <SimpleP>{ cards[currentCard].stackUrl }</SimpleP>
-            </a>
+            <InnerContent
+              padding={ '0 5px 15px 5px' }
+            >
+              <Title3>Documentação:</Title3>
+
+              <Link href={ cards[currentCard].stackDocsUrl } target="_blank" rel="noopener noreferrer">
+                <SimpleP padding={ '0 0 0 10px' }>{ cards[currentCard].stackDocsUrl }</SimpleP>
+              </Link>
+            </InnerContent>
+
+            <InnerContent
+              padding={ '0 5px 30px 5px' }
+            >
+              <Title3>Página da Ferramenta:</Title3>
+              <Link href={ cards[currentCard].stackUrl } target="_blank" rel="noopener noreferrer">
+                <SimpleP padding={ '0 0 0 10px' }>{ cards[currentCard].stackUrl }</SimpleP>
+              </Link>
+            </InnerContent>
           </Content>
       }
 

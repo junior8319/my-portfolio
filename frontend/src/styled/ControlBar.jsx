@@ -2,19 +2,15 @@ import styled from 'styled-components';
 
 const ControlBar = styled.nav`
   width: 100%;
-  height: 10%;
-  padding: 5px;
-  background-color: #ffffff15;
+  height: 7%;
+  padding: 0;
+  background-color: transparent;
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   margin: 0;
-
-  &:hover {
-    background-color: #0000ff20;
-  }
 
   @media (max-width: 400px) {
     align-self: center;

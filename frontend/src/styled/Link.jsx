@@ -4,6 +4,8 @@ const Link = styled.a`
   color: ${props => props.color || "#853935"};
   text-decoration: none;
   background: none;
+  margin: 0;
+  padding: 0;
 
   &:hover {
     color: #b9d6f4;

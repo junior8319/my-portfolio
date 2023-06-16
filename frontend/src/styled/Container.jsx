@@ -1,8 +1,16 @@
 import styled from 'styled-components';
 
+export const InnerContent = styled.div`
+  background-color: ${props => props.backGround || 'transparent'};
+  width: ${props => props.width || '95%'};
+  margin: ${props => props.margin || '5px 0'};
+  padding: ${props => props.padding || '0 10px'};
+  justify-content: center;
+`;
+
 const Container = styled.section`
   background-color: ${props => props.backGround};
-  width: 98%;
+  width: 100%;
   position: relative;
   top: 55px;
   border-radius: 10px;
@@ -14,7 +22,7 @@ const Container = styled.section`
     transition: 1s;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     flex-wrap: wrap;
   }
 `;

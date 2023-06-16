@@ -9,13 +9,11 @@ export const SimpleP = styled.p`
 
   @media (max-width: 1100px) {
     font-size: ${props => props.size || "0.85rem"};
-    margin: auto 20px;
-    width: 100%;    
   }
 
   @media (max-width: 400px) {
-    font-size: ${props => props.size || "0.75rem"};
+    font-size: ${props => props.size || "0.80rem"};
     margin: auto;
-    width: 100%;    
+    width: 95%;    
   }
 `;

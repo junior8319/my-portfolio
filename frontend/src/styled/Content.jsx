@@ -1,18 +1,15 @@
 import styled from 'styled-components';
 
 const Content = styled.article`
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   width: 100%;
-  height: 87%;
-  padding: 6px;
+  height: 88%;
   background-color: #ffffff15;
   border-radius: 10px;
   margin: 0;
 
   @media (max-width: 400px) {
-    align-self: center;
-    margin: auto;
-    justify-self: center;
   }
 `;
 

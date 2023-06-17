@@ -5,7 +5,7 @@ export const ControlButton = styled.button`
   font-weight: bold;
   padding: 10px;
   border-radius: 10px;
-  width: 100px;
+  width: 20%;
   background-color: #0000ff20;
   color: #b9d6f4;
 

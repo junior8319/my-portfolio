@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const NormalPicture = styled.img`
-  max-width: 200px;
-  max-height: 250px;
+  width: 200px;
+  height: 250px;
   background: none;
   border-radius: 10px;
   position: relative;
@@ -32,15 +32,12 @@ export const CardPicture = styled.img`
   box-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
 
   @media (max-width: 1100px) {
-    width: 75px;
+    max-width: 75px;
   }
 
   @media (max-width: 700px) {
-    justify-self: center;
     text-align: center;
     align-self: center;
-    margin: auto;
-    width: 100%;
-    height: auto;
+    margin: 7.5px auto;
   }
 `;

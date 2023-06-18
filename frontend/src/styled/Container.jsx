@@ -8,6 +8,10 @@ export const InnerContent = styled.div`
   justify-content: center;
 `;
 
+export const NavbarMenu = styled.div`
+  background-color: #e1dbdb30;
+`;
+
 const Container = styled.section`
   background-color: ${props => props.backGround};
   width: 100%;

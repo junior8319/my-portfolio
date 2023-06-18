@@ -62,3 +62,17 @@ export const CancelButton = styled.input`
     width: 75px;
   }
 `;
+
+export const NavMenuButton = styled.button`
+  border: 1px solid #e1dbdb50;
+  border-radius: 50px;
+  padding: 10px;
+  margin-left: 0;
+  position: fixed;
+  z-index: 1;
+  background-color: #47425f90;
+
+  @media (min-width: 501px) {
+    display: none;
+  }
+`;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Link = styled.a`
+const NavLink = styled.a`
   color: ${props => props.color || "#853935"};
   text-decoration: none;
   background: none;
@@ -12,4 +12,4 @@ const Link = styled.a`
   }
 `;
 
-export default Link;
+export default NavLink;

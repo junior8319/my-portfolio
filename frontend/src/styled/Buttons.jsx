@@ -70,7 +70,7 @@ export const NavMenuButton = styled.button`
   margin: 10px;
   position: fixed;
   z-index: 2;
-  background-color: #47425f90;
+  background-color: #47425f40;
 
   @media (min-width: 501px) {
     display: none;

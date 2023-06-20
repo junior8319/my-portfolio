@@ -8,8 +8,19 @@ export const InnerContent = styled.div`
   justify-content: center;
 `;
 
-export const NavbarMenu = styled.div`
-  background-color: #e1dbdb30;
+export const NavBarMenu = styled.div`
+  padding: 50px;
+  background-color: #e1dbdb75;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1;
+  transition: 2s ease-in-out;
+
+  a {
+    background-color: transparent;
+  }
 `;
 
 const Container = styled.section`

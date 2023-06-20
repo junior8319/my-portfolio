@@ -46,8 +46,11 @@ export const FormDiv25 = styled.div`
   color: #e1dbdb90;
 
   @media (max-width: 1100px) {
-    flex-wrap: wrap;
     width: 45%;
+  }
+
+  @media (max-width: 650px) {
+    width: 95%;
   }
 `;
 
@@ -58,5 +61,5 @@ export const FormContainer = styled.form`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
+  width: 95%;
 `;

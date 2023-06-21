@@ -9,7 +9,6 @@ const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
 
   const handleMenuBtnClick = () => {
-    console.log('Click');
     setShowMenu(!showMenu);
   };
 

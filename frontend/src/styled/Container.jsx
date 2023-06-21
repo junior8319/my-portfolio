@@ -9,29 +9,43 @@ export const InnerContent = styled.div`
 `;
 
 export const NavBarMenu = styled.div`
-  padding: 50px;
   background-color: #e1dbdb;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: fixed;
   z-index: 1;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 1s;
+  width: 95%;
+  height: 250px;
+  margin: 5px auto;
+  left: auto;
 
   @keyframes fadeIn {
     from {
       opacity: 0;
+      width: 10%;
+      height: 10px;
     }
 
     to {
       opacity: 1;
+      width: 95%;
+      height: 250px;
     }
   }
 
   a {
+    margin: 0 20px;
+    padding: 10px 0;
     color: #47425f;
     background-color: transparent;
     text-decoration: none;
+  }
+
+  @media (min-width: 500px) {
+    display: none;
   }
 `;
 

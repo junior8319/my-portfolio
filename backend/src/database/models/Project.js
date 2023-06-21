@@ -3,7 +3,6 @@ const {
   Model
 } = require('sequelize');
 
-const { Stack } = require('./Stack.js');
 module.exports = (sequelize, DataTypes) => {
   class Project extends Model {
     /**
@@ -11,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    // static associate(models) {
-    //   // define association here
-    // }
+    static associate(models) {
+      Project.hasMany(models.Stack);
+    }
   }
   Project.init({
     id: {
@@ -58,8 +57,6 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'projects',
     underscored: true,
   });
-
-  Project.Stack = Project.hasMany(Stack);
-
+  
   return Project;
 };

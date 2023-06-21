@@ -28,6 +28,8 @@ const NavBar = () => {
         :
         <>
           <NavMenuButton
+            zIndex={ '2' }
+            position={ 'fixed' }
             onClick={handleMenuBtnClick}
           >
             Menu

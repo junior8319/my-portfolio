@@ -16,7 +16,17 @@ export const NavBarMenu = styled.div`
   flex-direction: column;
   position: fixed;
   z-index: 1;
-  transition: 2s ease-in-out;
+  animation: fadeIn 0.5s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
 
   a {
     color: #47425f;

@@ -4,7 +4,7 @@ export const TableContainer = styled.section`
   border: none;
   padding: 5px;
   border-radius: 10px;
-  width: 100%;
+  width: 95%;
   max-height: 175px;
   overflow-y: scroll;
 `;

@@ -10,7 +10,7 @@ export const InnerContent = styled.div`
 
 export const NavBarMenu = styled.div`
   padding: 50px;
-  background-color: #e1dbdb75;
+  background-color: #e1dbdb;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,9 @@ export const NavBarMenu = styled.div`
   transition: 2s ease-in-out;
 
   a {
+    color: #47425f;
     background-color: transparent;
+    text-decoration: none;
   }
 `;
 

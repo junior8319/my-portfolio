@@ -104,203 +104,188 @@ const ContactMe = () => {
   }, [errorsObj, messageObj, sendingStatus]);
  
   return (
-    <Container>
+    <>
       <NavBar />
-      <Article>
-        <Title1>Contato</Title1>
-        
-        <FormContainer>
-          <FormDiv100
-            padding={ '0 10px' }
-            margin={ '1px auto' }
-          >
-            <Label htmlFor='name'>
-              Nome:
-              { errorsObj.name.required &&
-                <Span>*</Span>
-              }
-            </Label>
+      <Container>
+        <Article>
+          <Title1>Contato</Title1>
 
-            <Input
-              id='name'
-              name='name'
-              placeholder='Seu nome aqui...'
-              value={ messageObj.name }
-              required
-              onChange={(event) => handleInputChange(event) }
-              onKeyUp={ () => {
-                setErrorsObj({
-                  ...errorsObj,
-                  name: { ...errorsObj.name, error: validateName(messageObj.name) }
-                });
-              } }
-            />
-          </FormDiv100>
-
-          { errorsObj.name.error.length > 0 &&
+          <FormContainer>
             <FormDiv100
-              padding={ '0 10px' }
-              margin={ '1px auto' }
+              padding={'0 10px'}
+              margin={'1px auto'}
             >
-              <SimpleP color={ '#f59a9a' }>{ errorsObj.name.error }</SimpleP>
+              <Label htmlFor='name'>
+                Nome:
+                {errorsObj.name.required &&
+                  <Span>*</Span>}
+              </Label>
+
+              <Input
+                id='name'
+                name='name'
+                placeholder='Seu nome aqui...'
+                value={messageObj.name}
+                required
+                onChange={(event) => handleInputChange(event)}
+                onKeyUp={() => {
+                  setErrorsObj({
+                    ...errorsObj,
+                    name: { ...errorsObj.name, error: validateName(messageObj.name) }
+                  });
+                } } />
             </FormDiv100>
-          }
 
-          <FormDiv100
-            padding={ '0 10px' }
-            margin={ '1px auto' }
-          >
-            <Label htmlFor='email'>
-              E-mail:
-              { errorsObj.email.required &&
-                <Span>*</Span>
-              }
-            </Label>
+            {errorsObj.name.error.length > 0 &&
+              <FormDiv100
+                padding={'0 10px'}
+                margin={'1px auto'}
+              >
+                <SimpleP color={'#f59a9a'}>{errorsObj.name.error}</SimpleP>
+              </FormDiv100>}
 
-            <Input
-              id='email'
-              name='email'
-              placeholder='ex.: seuEndereço@dominio.com'
-              value={ messageObj.email }
-              required
-              onChange={ (event) => handleInputChange(event) }
-              onKeyUp={ () => {
-                setErrorsObj({
-                  ...errorsObj,
-                  email: { ...errorsObj.email, error: validateEmail(messageObj.email) }
-                });
-              } }
-            />
-          </FormDiv100>
-
-          { errorsObj.email.error.length > 0 &&
             <FormDiv100
-              padding={ '0 10px' }
-              margin={ '1px auto' }
+              padding={'0 10px'}
+              margin={'1px auto'}
             >
-              <SimpleP color={ '#f59a9a' }>{ errorsObj.email.error }</SimpleP>
+              <Label htmlFor='email'>
+                E-mail:
+                {errorsObj.email.required &&
+                  <Span>*</Span>}
+              </Label>
+
+              <Input
+                id='email'
+                name='email'
+                placeholder='ex.: seuEndereço@dominio.com'
+                value={messageObj.email}
+                required
+                onChange={(event) => handleInputChange(event)}
+                onKeyUp={() => {
+                  setErrorsObj({
+                    ...errorsObj,
+                    email: { ...errorsObj.email, error: validateEmail(messageObj.email) }
+                  });
+                } } />
             </FormDiv100>
-          }
 
-          <FormDiv100
-            padding={ '0 10px' }
-            margin={ '1px auto' }
-          >
-            <Label htmlFor='phone'>
-              Telefone:
-              { errorsObj.phone.required &&
-                <Span>*</Span>
-              }
-            </Label>
+            {errorsObj.email.error.length > 0 &&
+              <FormDiv100
+                padding={'0 10px'}
+                margin={'1px auto'}
+              >
+                <SimpleP color={'#f59a9a'}>{errorsObj.email.error}</SimpleP>
+              </FormDiv100>}
 
-            <Input
-              id='phone'
-              name='phone'
-              placeholder='(ddd com 2 dígitos) + número...(digite somente números)'
-              mask='(99) 99999-9999999'
-              maskChar={ null }
-              value={ messageObj.phone }
-              onChange={ (event) => handleInputChange(event) }
-              onKeyUp={ () => {
-                setErrorsObj({
-                  ...errorsObj,
-                  phone: { ...errorsObj.phone, error: validatePhone(messageObj.phone) }
-                });
-              } }
-            />
-          </FormDiv100>
-
-          { errorsObj.phone.error.length > 0 &&
             <FormDiv100
-              padding={ '0 10px' }
-              margin={ '1px auto' }
+              padding={'0 10px'}
+              margin={'1px auto'}
             >
-              <SimpleP color={ '#f59a9a' }>{ errorsObj.phone.error }</SimpleP>
+              <Label htmlFor='phone'>
+                Telefone:
+                {errorsObj.phone.required &&
+                  <Span>*</Span>}
+              </Label>
+
+              <Input
+                id='phone'
+                name='phone'
+                placeholder='(ddd com 2 dígitos) + número...(digite somente números)'
+                mask='(99) 99999-9999999'
+                maskChar={null}
+                value={messageObj.phone}
+                onChange={(event) => handleInputChange(event)}
+                onKeyUp={() => {
+                  setErrorsObj({
+                    ...errorsObj,
+                    phone: { ...errorsObj.phone, error: validatePhone(messageObj.phone) }
+                  });
+                } } />
             </FormDiv100>
-          }
 
-          <FormDiv100
-            padding={ '0 10px' }
-            margin={ '1px auto' }
-          >
-            <Label
-              htmlFor='message'
-            >
-              Mensagem:
-              { errorsObj.message.required &&
-                <Span>*</Span>
-              }
-            </Label>
-            
-            <TextArea
-              rows={ 10 }
-              id='message'
-              name='message'
-              placeholder='Digite sua mensagem...'
-              value={ messageObj.message }
-              required
-              onChange={ (event) => handleInputChange(event) }
-              onKeyUp={ () => {
-                setErrorsObj({
-                  ...errorsObj,
-                  message: { ...errorsObj.message, error: validateMessage(messageObj.message) }
-                });
-              } }
-            />
-          </FormDiv100>
+            {errorsObj.phone.error.length > 0 &&
+              <FormDiv100
+                padding={'0 10px'}
+                margin={'1px auto'}
+              >
+                <SimpleP color={'#f59a9a'}>{errorsObj.phone.error}</SimpleP>
+              </FormDiv100>}
 
-          { errorsObj.message.error.length > 0 &&
             <FormDiv100
-              padding={ '0 10px' }
-              margin={ '1px auto' }
+              padding={'0 10px'}
+              margin={'1px auto'}
             >
-              <SimpleP color={ '#f59a9a' }>{ errorsObj.message.error }</SimpleP>
-            </FormDiv100>
-          }
+              <Label
+                htmlFor='message'
+              >
+                Mensagem:
+                {errorsObj.message.required &&
+                  <Span>*</Span>}
+              </Label>
 
-          <FormDiv100
-            padding={ '0 10px' }
-            margin={ '1px auto' }
-          >
-            { (sendingStatusMsg && sendingStatusMsg.length > 0) &&
-              <FormDiv100>
-                <SimpleP
-                  color={ (sendingStatus === 'OK') ? '#13890f' : '#f59a9a' }
-                >
-                  { sendingStatusMsg }
-                </SimpleP>
-                
-                <CancelButton
+              <TextArea
+                rows={10}
+                id='message'
+                name='message'
+                placeholder='Digite sua mensagem...'
+                value={messageObj.message}
+                required
+                onChange={(event) => handleInputChange(event)}
+                onKeyUp={() => {
+                  setErrorsObj({
+                    ...errorsObj,
+                    message: { ...errorsObj.message, error: validateMessage(messageObj.message) }
+                  });
+                } } />
+            </FormDiv100>
+
+            {errorsObj.message.error.length > 0 &&
+              <FormDiv100
+                padding={'0 10px'}
+                margin={'1px auto'}
+              >
+                <SimpleP color={'#f59a9a'}>{errorsObj.message.error}</SimpleP>
+              </FormDiv100>}
+
+            <FormDiv100
+              padding={'0 10px'}
+              margin={'1px auto'}
+            >
+              {(sendingStatusMsg && sendingStatusMsg.length > 0) &&
+                <FormDiv100>
+                  <SimpleP
+                    color={(sendingStatus === 'OK') ? '#13890f' : '#f59a9a'}
+                  >
+                    {sendingStatusMsg}
+                  </SimpleP>
+
+                  <CancelButton
+                    type='button'
+                    value={'Fechar'}
+                    onClick={() => setSendingStatus('')} />
+                </FormDiv100>}
+
+              {isSending
+                ?
+                <FormDiv100>
+                  <Loading
+                    word={'Enviando...'}
+                    marginTop={'10px'}
+                    marginBottom={'10px'}
+                    height={'60px'}
+                    width={'90%'}
+                    fontSize={'24px'} />
+                </FormDiv100>
+                :
+                <SaveButton
                   type='button'
-                  value={ 'Fechar' }
-                  onClick={ () => setSendingStatus('') }
-                />
-              </FormDiv100>
-            }
-
-            { isSending
-              ?
-              <FormDiv100>
-                <Loading
-                  word={ 'Enviando...' }
-                  marginTop={ '10px' }
-                  marginBottom={ '10px' }
-                  height={ '60px' }
-                  width={ '90%' }
-                  fontSize={ '24px' }
-                />
-              </FormDiv100>
-              :
-              <SaveButton
-                type='button'
-                value={ 'Enviar' }
-                onClick={ (event) => handleSubmit(event) }
-              />
-            }
-          </FormDiv100>
-        </FormContainer>
-      </Article>
-    </Container>
+                  value={'Enviar'}
+                  onClick={(event) => handleSubmit(event)} />}
+            </FormDiv100>
+          </FormContainer>
+        </Article>
+      </Container>
+    </>
   );
 };
 

@@ -64,10 +64,10 @@ export const CancelButton = styled.input`
 `;
 
 export const NavMenuButton = styled.button`
-  border: 1px solid #e1dbdb50;
+  border: 0.5px solid #e1dbdb50;
   border-radius: 50px;
   padding: 10px;
-  margin: 10px;
+  margin: 5px;
   position: fixed;
   z-index: 2;
   background-color: #47425f40;

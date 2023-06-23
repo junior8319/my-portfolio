@@ -18,7 +18,7 @@ export const NavBarMenu = styled.div`
   z-index: 1;
   animation: fadeIn 1s;
   width: 95%;
-  height: 250px;
+  height: 300px;
   margin: 5px auto;
   left: auto;
 
@@ -32,12 +32,12 @@ export const NavBarMenu = styled.div`
     to {
       opacity: 1;
       width: 95%;
-      height: 250px;
+      height: 300px;
     }
   }
 
   a {
-    margin: 0 20px;
+    margin: 0 30px;
     padding: 10px 0;
     color: #47425f;
     background-color: transparent;

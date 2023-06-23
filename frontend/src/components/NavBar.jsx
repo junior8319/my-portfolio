@@ -17,14 +17,7 @@ const NavBar = () => {
       {
         showMenu
         ?
-        <>
-          <NavMenuButton
-            onClick={ handleMenuBtnClick }
-          >
-            Fechar
-          </NavMenuButton>
-          <NavMenu />
-        </>
+        <NavMenu handleMenuBtnClick={ handleMenuBtnClick } />
         :
         <>
           <NavMenuButton

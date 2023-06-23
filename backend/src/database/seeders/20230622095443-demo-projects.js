@@ -8,10 +8,9 @@ module.exports = {
         {
           title: 'Business Flow',
           snapshot: '',
-          description: '',
+          description: 'Projeto desenvolvido para um processo seletivo e tem como ideia principal gerenciar notas fiscais emitidas, empresas cadastradas e movimentações financeiras a partir das notas fiscais.',
           projectUrl: '',
-          startDate: '',
-          finishDate: '',
+          startDate: new Date('2022-12-01'),
           createdAt: new Date(),
           updatedAt: new Date(),
         },

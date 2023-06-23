@@ -67,10 +67,10 @@ export const NavMenuButton = styled.button`
   border: 0.5px solid #e1dbdb50;
   border-radius: 50px;
   padding: 10px;
-  margin: 5px;
+  margin: 5px 15px;
   position: ${props => props.position || ''};
   z-index: ${props => props.zIndex || ''};
-  background-color: #47425f40;
+  background-color: #47425f90;
 
   @media (min-width: 501px) {
     display: none;

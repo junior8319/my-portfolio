@@ -26,8 +26,20 @@ const createProject = async (project) => {
   return newProject.dataValues;
 };
 
+const updateProject = async (id, project) => {
+  const projectToUpdate = await getProjectById(id);
+  if (!projectToUpdate) return null;
+
+  const updatedProject = await Project.update(project, { where: { id } });
+
+  if (!updatedProject) return null;
+
+  return updatedProject;
+};
+
 module.exports = {
   getAllProjects,
   getProjectById,
   createProject,
+  updateProject,
 };

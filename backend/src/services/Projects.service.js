@@ -18,7 +18,16 @@ const getProjectById = async (id) => {
   return project.dataValues;
 };
 
+const createProject = async (project) => {
+  const newProject = await Project.create(project);
+
+  if (!newProject) return null;
+
+  return newProject.dataValues;
+};
+
 module.exports = {
   getAllProjects,
   getProjectById,
+  createProject,
 };

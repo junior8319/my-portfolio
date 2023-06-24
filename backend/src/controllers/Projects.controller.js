@@ -17,6 +17,24 @@ const getAllProjects = async (_request, response) => {
   }
 };
 
+const getProjectById = async (request, response) => {
+  try {
+    const project = ProjectsService.getProjectById(request.params.id);
+
+    if (!project) {
+      return response.status(404).json({
+        message: 'Project not found',
+      });
+    }
+
+    return response.status(200).json(project);
+  } catch (error) {
+    console.log(error);
+    return response.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 module.exports = {
   getAllProjects,
+  getProjectById,
 };

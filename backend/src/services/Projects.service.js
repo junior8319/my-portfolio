@@ -37,9 +37,21 @@ const updateProject = async (id, project) => {
   return updatedProject;
 };
 
+const deleteProject = async (id) => {
+  const projectToDelete = await getProjectById(id);
+  if (!projectToDelete) return null;
+
+  const deletedProject = await Project.destroy({ where: { id } });
+
+  if (!deletedProject) return null;
+
+  return deletedProject;
+};
+
 module.exports = {
   getAllProjects,
   getProjectById,
   createProject,
   updateProject,
+  deleteProject,
 };

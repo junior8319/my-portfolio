@@ -34,7 +34,27 @@ const getProjectById = async (request, response) => {
   }
 };
 
+const createProject = async (request, response) => {
+  try {
+    const newProject = await ProjectsService.createProject(request.body);
+    if (!newProject) {
+      return response.status(400).json({
+        message: 'Project not created',
+      });
+    }
+
+    return response.status(201).json({
+      message: 'Successfully created project.',
+      project: newProject,
+    });
+  } catch (error) {
+    console.log(error);
+    return response.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 module.exports = {
   getAllProjects,
   getProjectById,
+  createProject,
 };

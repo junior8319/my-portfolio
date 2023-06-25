@@ -1,19 +1,20 @@
 'use strict';
 const {
-  Model,
+  Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  class Stack extends Model {
+  class Project extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) { // 
-      Stack.belongsToMany(models.Project, { through: models.StackProject });
+    static associate(models) {
+      Project.belongsToMany(models.Stack, { through: models.StackProject });
     }
   }
-  Stack.init({
+  Project.init({
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -25,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
     },
-    imageUrl: {
+    snapshot: {
       type: DataTypes.TEXT,
       defaultValue: '',
     },
@@ -34,23 +35,28 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: '',
       allowNull: false,
     },
-    stackDocsUrl: {
+    projectUrl: {
       type: DataTypes.STRING,
+      defaultValue: '',
     },
-    stackUrl: {
-      type: DataTypes.STRING,
+    startDate: {
+      type: DataTypes.DATE,
+    },
+    finishDate: {
+      type: DataTypes.DATE,
     },
     createdAt: {
       type: DataTypes.DATE,
     },
-    updatedAt: {
+    updateAt: {
       type: DataTypes.DATE,
     },
   }, {
     sequelize,
-    modelName: 'Stack',
-    tableName: 'stacks',
+    modelName: 'Project',
+    tableName: 'projects',
     underscored: true,
   });
-  return Stack;
+  
+  return Project;
 };

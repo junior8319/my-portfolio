@@ -53,8 +53,30 @@ const createProject = async (request, response) => {
   }
 };
 
+const updateProject = async (request, response) => {
+  try {
+    const projectToUpdate = await ProjectsService.getProjectById(request.params.id);
+    const updatedProject = await ProjectsService.updateProject(projectToUpdate.id, request.body);
+
+    if (!updateProject) {
+      return response.status(400).json({
+        message: 'Project not updated.',
+      });
+    }
+
+    return response.status(200).json({
+      message: 'Atualizado com sucesso',
+      project: updatedProject,
+    });
+  } catch (error) {
+    console.log(error);
+    return response.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 module.exports = {
   getAllProjects,
   getProjectById,
   createProject,
+  updateProject,
 };

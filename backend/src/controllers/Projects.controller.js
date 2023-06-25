@@ -74,9 +74,32 @@ const updateProject = async (request, response) => {
   }
 };
 
+const deleteProject = async (request, response) => {
+  try {
+    const projectToDelete = await ProjectsService.getProjectById(request.params.id);
+    const deletedProject = await ProjectsService.deleteProject(projectToDelete.id);
+
+    if (!deletedProject) {
+      return response.status(400).json({
+        message: 'Project not deleted',
+      });
+    }
+
+    return response.status(202).json({
+      message: 'Successfully deleted',
+      project: deletedProject,
+    });
+  } catch (error) {
+    console.log(error);
+    return response
+      .status(500).json({ message: 'Internal server error' });
+  }
+};
+
 module.exports = {
   getAllProjects,
   getProjectById,
   createProject,
   updateProject,
+  deleteProject,
 };

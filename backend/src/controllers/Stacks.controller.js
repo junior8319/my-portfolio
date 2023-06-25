@@ -78,7 +78,7 @@ const deleteStack = async (req, res) => {
       });
     }
 
-    return res.status(200).json({ message: 'Deletado com sucesso.', stack: deletedStack });
+    return res.status(202).json({ message: 'Successfully deleted', stack: deletedStack });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Internal server error' });

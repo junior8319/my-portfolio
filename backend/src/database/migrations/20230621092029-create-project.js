@@ -18,24 +18,24 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      projectUrl: {
+      project_url: {
         type: Sequelize.STRING,
       },
-      startDate: {
+      start_date: {
         type: Sequelize.DATE,
       },
-      finishDate: {
+      finish_date: {
         type: Sequelize.DATE,
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      stackId: {
+      stack_id: {
         type: Sequelize.INTEGER,
         references: {
           model: {

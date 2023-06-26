@@ -2,7 +2,7 @@ const ProjectsService = require('../services/Projects.service');
 
 const getAllProjects = async (_request, response) => {
   try {
-    const projects = ProjectsService.getAllProjects();
+    const projects = await ProjectsService.getAllProjects();
 
     if (!projects) {
       return response.status(404).json({
@@ -19,7 +19,7 @@ const getAllProjects = async (_request, response) => {
 
 const getProjectById = async (request, response) => {
   try {
-    const project = ProjectsService.getProjectById(request.params.id);
+    const project = await ProjectsService.getProjectById(request.params.id);
 
     if (!project) {
       return response.status(404).json({

@@ -37,8 +37,25 @@ const updateStackProject = async (prevRegister, newRegister) => {
   return updatedStackProject;
 };
 
+const deleteStackProject = async (stackProject) => {
+  const stackProjectToDelete = await StackProject.findByPk(stackProject);
+  if (!stackProjectToDelete) return null;
+
+  const deletedStackProject = await StackProject.destroy({
+    where: {
+      stackId: stackProject.stackId,
+      projectId: stackProject.projectId,
+    },
+  });
+
+  if (!deletedStackProject) return null;
+
+  return deletedStackProject;
+};
+
 module.exports = {
   getAll,
   createStackProject,
   updateStackProject,
+  deleteStackProject,
 };

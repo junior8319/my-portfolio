@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'StackProject',
     tableName: 'stacksProjects',
+    underscored: true,
   });
   return StackProject;
 };

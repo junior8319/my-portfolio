@@ -10,6 +10,15 @@ const getAll = async () => {
   return stacksProjectsList.map(stackProject => stackProject);
 };
 
+const createStackProject = async (stackProject) => {
+  const newStackProject = await StackProject.create(stackProject);
+
+  if (!newStackProject) return null;
+
+  return newStackProject.dataValues;
+};
+
 module.exports = {
   getAll,
+  createStackProject,
 };

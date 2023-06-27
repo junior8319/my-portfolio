@@ -18,7 +18,27 @@ const createStackProject = async (stackProject) => {
   return newStackProject.dataValues;
 };
 
+const updateStackProject = async (prevRegister, newRegister) => {
+  const stackProjectToUpdate = await StackProject.findByPk(prevRegister);
+  if (!stackProjectToUpdate) return null;
+
+  const updatedStackProject = await StackProject.update(
+    newRegister,
+    {
+      where: {
+        stackId: prevRegister.stackId,
+        projectId: prevRegister.projectId,
+      },
+    },
+  );
+
+  if (!updatedStackProject) return null;
+
+  return updatedStackProject;
+};
+
 module.exports = {
   getAll,
   createStackProject,
+  updateStackProject,
 };

@@ -84,9 +84,44 @@ const updateStackProject = async (request, response) => {
   }
 };
 
+const deleteStackProject = async (request, response) => {
+  try {
+    const paramsToSearch = {
+      stackId: request.params.stackId,
+      projectId: request.params.projectId,
+    };
+
+    const stackProjectToDelete = await stacksProjectsService.getStackProjectByPk(paramsToSearch);
+    if (!stackProjectToDelete) response
+    .status(404)
+    .json({
+      message: 'Association to exclude not found',
+    });
+
+    const deletedStackProject = await stacksProjectsService.deleteStackProject(stackProjectToDelete);
+    if (!deletedStackProject) return response
+    .status(400)
+    .json({
+      message: 'Unable to exclude the association.',
+      stackProject: stackProjectToDelete,
+    });
+
+    return response
+    .status(202)
+    .json({
+      message: 'Successfully deleted association.',
+      stackProject: deletedStackProject,
+    });
+  } catch (error) {
+    console.log(error);
+    return response.status(500).json({ message: 'Internal server error.' });
+  }
+};
+
 module.exports = {
   getAllStacksProjects,
   getStackProjectByPk,
   createStackProject,
   updateStackProject,
+  deleteStackProject,
 }

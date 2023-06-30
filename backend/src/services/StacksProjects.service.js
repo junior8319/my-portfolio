@@ -10,6 +10,13 @@ const getAll = async () => {
   return stacksProjectsList.map(stackProject => stackProject);
 };
 
+const getStackProjectByPk = async (stackProjectObj) => {
+  const stackProject = await StackProject.findByPk(stackProjectObj);
+  if (!stackProject) return null;
+
+  return stackProject.dataValues;
+};
+
 const createStackProject = async (stackProject) => {
   const newStackProject = await StackProject.create(stackProject);
 
@@ -58,4 +65,5 @@ module.exports = {
   createStackProject,
   updateStackProject,
   deleteStackProject,
+  getStackProjectByPk,
 };

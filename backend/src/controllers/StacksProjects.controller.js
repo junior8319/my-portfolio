@@ -17,6 +17,31 @@ const getAllStacksProjects = async (_request, response) => {
   }
 };
 
+const getStackProjectByPk = async (request, response) => {
+  try {
+    const paramsToSearch = {
+      stackId: request.params.stackId,
+      projectId: request.params.projectId,
+    };
+
+    console.log('PARAMS', paramsToSearch);
+
+    const stackProject = await stacksProjectsService.getStackProjectByPk(paramsToSearch);
+    if (!stackProject) return response
+      .status(404)
+      .json({
+        message:
+          `Association of stackId: ${paramsToSearch.stackId} and 
+          projectId: ${paramsToSearch.projectId} not found.`,
+      });
+
+    return response.status(200).json(stackProject);
+  } catch (error) {
+    console.log(error);
+    return response.status(500).json({ message: 'Internal server error.' });
+  }
+};
+
 const createStackProject = async (request, response) => {
   try {
     const newStackProject = await stacksProjectsService.createStackProject(request.body);
@@ -41,5 +66,6 @@ const createStackProject = async (request, response) => {
 
 module.exports = {
   getAllStacksProjects,
+  getStackProjectByPk,
   createStackProject,
 }

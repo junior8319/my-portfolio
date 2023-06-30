@@ -64,8 +64,29 @@ const createStackProject = async (request, response) => {
   }
 };
 
+const updateStackProject = async (request, response) => {
+  try {
+    const stackProjectToUpdate = await stacksProjectsService.updateStackProject(request.body);
+
+    if (!stackProjectToUpdate) return response
+      .status(400)
+      .json({
+        message: 'Unable to change this association',
+      });
+
+    return response.status(200).json({
+      message: 'Successfully updated.',
+      stackProject: stackProjectToUpdate,
+    });
+  } catch (error) {
+    console.log(error);
+    return response.status(500).json({ message: 'Internal server error.' });
+  }
+};
+
 module.exports = {
   getAllStacksProjects,
   getStackProjectByPk,
   createStackProject,
+  updateStackProject,
 }

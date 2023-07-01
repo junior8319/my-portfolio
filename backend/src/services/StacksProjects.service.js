@@ -1,8 +1,9 @@
-const { StackProject, Stack, Project } = require('../database/models');
+const { StackProject, Project, Stack } = require('../database/models');
 
 const getAll = async () => {
   const stacksProjectsList = await StackProject.findAll({
-    include: [Stack, Project],
+    where: {},
+    include: [Project, Stack],
   });
 
   if (!stacksProjectsList) return null;

@@ -8,6 +8,6 @@ app.use(cors()); // allow all origins
 
 app.use('/stacks', stacksRouter);
 app.use('/projects', projectsRouter);
-app.use('/stacksProjects', stacksProjectsRouter);
+app.use('/stacks-projects', stacksProjectsRouter);
 
 module.exports = app;

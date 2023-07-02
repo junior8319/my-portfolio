@@ -35,16 +35,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
-      stack_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: {
-            tableName: 'stacks',
-          },
-          key: 'id'
-        },
-        allowNull: true,
-      },
     });
   },
   async down(queryInterface) {

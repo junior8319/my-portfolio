@@ -48,8 +48,12 @@ const getAll = async () => {
   });
 };
 
-const getStackProjectByPk = async (stackProjectObj) => {
-  const stackProject = await StackProject.findByPk(stackProjectObj);
+const getStackProjectByPk = async ({ stackId, projectId }) => {
+  const stackProject = await StackProject.findByPk(Number(stackId), {
+    where: {
+      projectId: Number(projectId),
+    },
+  });
   if (!stackProject) return null;
 
   return stackProject.dataValues;

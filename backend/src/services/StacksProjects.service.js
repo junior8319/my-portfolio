@@ -27,17 +27,24 @@ const getAll = async () => {
     });
 
     const filteredProjects = projects.filter((project) => {
-      if (stackProject.dataValues.projectId === project.id) return project.title;
+      if (stackProject.dataValues.projectId === project.id) {
+        return project.title;
+      }
     });
 
     let objectToReturn = stackProject.dataValues;
 
-    if (filteredStacks.length > 0) objectToReturn = { ...objectToReturn, stacks: filteredStacks };
+    if (filteredStacks.length > 0) objectToReturn = {
+      ...objectToReturn,
+      stacks: filteredStacks
+    };
 
-    if (filteredProjects.length > 0) objectToReturn = { ...objectToReturn, projects: filteredProjects };
+    if (filteredProjects.length > 0) objectToReturn = {
+      ...objectToReturn,
+      projects: filteredProjects
+    };
 
     return objectToReturn;
-
   });
 };
 

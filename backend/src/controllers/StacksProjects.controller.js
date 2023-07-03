@@ -24,8 +24,6 @@ const getStackProjectByPk = async (request, response) => {
       projectId: request.params.projectId,
     };
 
-    console.log('PARAMS', paramsToSearch);
-
     const stackProject = await stacksProjectsService.getStackProjectByPk(paramsToSearch);
     if (!stackProject) return response
       .status(404)

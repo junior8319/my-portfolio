@@ -64,7 +64,8 @@ const createStackProject = async (request, response) => {
 
 const updateStackProject = async (request, response) => {
   try {
-    const stackProjectToUpdate = await stacksProjectsService.updateStackProject(request.body);
+    const { stackId, projectId } = request.params;
+    const stackProjectToUpdate = await stacksProjectsService.updateStackProject({ stackId, projectId }, request.body);
 
     if (!stackProjectToUpdate) return response
       .status(400)

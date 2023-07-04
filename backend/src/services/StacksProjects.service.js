@@ -68,15 +68,23 @@ const createStackProject = async (stackProject) => {
 };
 
 const updateStackProject = async (prevRegister, newRegister) => {
-  const stackProjectToUpdate = await StackProject.findByPk(prevRegister);
+  const { stackId, projectId } = prevRegister;
+  const stackProjectToUpdate = await StackProject.findByPk(
+    Number(stackId),
+    {
+      where: {
+        projectId: Number(projectId),
+      }
+    }
+  );
   if (!stackProjectToUpdate) return null;
 
   const updatedStackProject = await StackProject.update(
     newRegister,
     {
       where: {
-        stackId: prevRegister.stackId,
-        projectId: prevRegister.projectId,
+        stackId,
+        projectId,
       },
     },
   );

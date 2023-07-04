@@ -60,7 +60,7 @@ const updateStack = async (req, res) => {
       });
     }
 
-    return res.status(200).json({ message: 'Atualizado com sucesso.', stack: updatedStack });
+    return res.status(200).json({ message: 'Sucessfully updated.', stack: updatedStack });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: 'Internal server error' });

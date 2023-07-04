@@ -29,8 +29,8 @@ const getStackProjectByPk = async (request, response) => {
       .status(404)
       .json({
         message:
-          `Association of stackId: ${paramsToSearch.stackId} and 
-          projectId: ${paramsToSearch.projectId} not found.`,
+          `Association of stackId:${paramsToSearch.stackId} and ` +
+          `projectId:${paramsToSearch.projectId} not found.`,
       });
 
     return response.status(200).json(stackProject);

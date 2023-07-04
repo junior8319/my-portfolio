@@ -95,13 +95,22 @@ const updateStackProject = async (prevRegister, newRegister) => {
 };
 
 const deleteStackProject = async (stackProject) => {
-  const stackProjectToDelete = await StackProject.findByPk(stackProject);
+  const { stackId, projectId } = stackProject;
+  const stackProjectToDelete = await StackProject
+  .findByPk(
+    Number(stackId),
+    {
+      where: {
+        projectId: Number(projectId),
+      },
+    }
+  );
   if (!stackProjectToDelete) return null;
 
   const deletedStackProject = await StackProject.destroy({
     where: {
-      stackId: stackProject.stackId,
-      projectId: stackProject.projectId,
+      stackId: Number(stackId),
+      projectId: Number(projectId),
     },
   });
 

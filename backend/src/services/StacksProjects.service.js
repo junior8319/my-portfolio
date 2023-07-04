@@ -83,8 +83,8 @@ const updateStackProject = async (prevRegister, newRegister) => {
     newRegister,
     {
       where: {
-        stackId,
-        projectId,
+        stackId: Number(stackId),
+        projectId: Number(projectId),
       },
     },
   );

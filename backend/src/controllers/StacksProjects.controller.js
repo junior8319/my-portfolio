@@ -109,7 +109,7 @@ const deleteStackProject = async (request, response) => {
     .status(202)
     .json({
       message: 'Successfully deleted association.',
-      stackProject: deletedStackProject,
+      stackProject: stackProjectToDelete,
     });
   } catch (error) {
     console.log(error);

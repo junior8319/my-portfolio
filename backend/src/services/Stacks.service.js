@@ -20,6 +20,9 @@ const createStack = async (stack) => {
 
 const findStackById = async (id) => {
   const stack = await Stack.findByPk(id);
+  const projects = await stack.getProjects();
+
+  console.log('PROJECTS?', projects);
 
   if (!stack) {
     return null;

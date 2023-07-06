@@ -20,15 +20,15 @@ const createStack = async (stack) => {
 
 const findStackById = async (id) => {
   const stack = await Stack.findByPk(id);
-  const projects = await stack.getProjects();
+  let projects = await stack.getProjects();
 
-  console.log('PROJECTS?', projects);
+  projects = projects.map((project) => project.dataValues);
 
   if (!stack) {
     return null;
   }
 
-  return stack.dataValues;
+  return { ...stack.dataValues, projects };
 };
 
 const updateStack = async (id, stack) => {

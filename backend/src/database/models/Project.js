@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Project.belongsToMany(models.Stack, { through: models.StackProject });
+      models.Project.belongsToMany(models.Stack, { through: 'stacksProjects' });
     }
   }
   Project.init({
@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
     createdAt: {
       type: DataTypes.DATE,
     },
-    updateAt: {
+    updatedAt: {
       type: DataTypes.DATE,
     },
   }, {

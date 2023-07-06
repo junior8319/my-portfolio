@@ -4,8 +4,9 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('stacksProjects',
       {
-        stackId: {
+        stack_id: {
           type: Sequelize.INTEGER,
+          allowNull: false,
           primaryKey: true,
           references: {
             model: {
@@ -14,8 +15,9 @@ module.exports = {
             key: 'id',
           },
         },
-        projectId: {
+        project_id: {
           type: Sequelize.INTEGER,
+          allowNull: false,
           primaryKey: true,
           references: {
             model: {

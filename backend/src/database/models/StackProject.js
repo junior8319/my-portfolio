@@ -10,16 +10,26 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     // static associate(models) {
-    //   // define association here
+    
     // }
   }
   StackProject.init({
-    stackId: DataTypes.INTEGER,
-    projectId: DataTypes.INTEGER
+    stackId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+    },
+    projectId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+    },
   }, {
     sequelize,
     modelName: 'StackProject',
     tableName: 'stacksProjects',
+    underscored: true,
+    timestamps: false,
   });
   return StackProject;
 };

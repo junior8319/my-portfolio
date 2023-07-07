@@ -1,51 +1,13 @@
-const { StackProject, Stack, Project } = require('../database/models');
+const { StackProject } = require('../database/models');
 
 const getAll = async () => {
-  const stacksProjectsList = await StackProject.findAll();
+  const stacksProjectsList = await StackProject.findAll({
+    include: [],
+  });
 
   if (!stacksProjectsList) return null;
-  
-  let stacks = await Stack.findAll();
-  stacks = stacks.map((stack) => {
-    return {
-      id: stack.dataValues.id,
-      title: stack.dataValues.title,
-    };
-  });
 
-  let projects = await Project.findAll();
-  projects = projects.map((project) => {
-    return {
-      id: project.dataValues.id,
-      title: project.dataValues.title,
-    };
-  });
-
-  return stacksProjectsList.map(stackProject => {
-    const filteredStacks = stacks.filter((stack) => {
-      if (stackProject.dataValues.stackId === stack.id) return stack.title;
-    });
-
-    const filteredProjects = projects.filter((project) => {
-      if (stackProject.dataValues.projectId === project.id) {
-        return project.title;
-      }
-    });
-
-    let objectToReturn = stackProject.dataValues;
-
-    if (filteredStacks.length > 0) objectToReturn = {
-      ...objectToReturn,
-      stacks: filteredStacks
-    };
-
-    if (filteredProjects.length > 0) objectToReturn = {
-      ...objectToReturn,
-      projects: filteredProjects
-    };
-
-    return objectToReturn;
-  });
+  return stacksProjectsList;
 };
 
 const getStackProjectByPk = async ({ stackId, projectId }) => {

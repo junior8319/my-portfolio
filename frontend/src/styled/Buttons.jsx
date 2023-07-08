@@ -19,6 +19,10 @@ export const ControlButton = styled.button`
     padding: 5px;
     width: 70px;
   }
+
+  @media (max-width: 400px) {
+    width: 20%;
+  }
 `;
 
 export const SaveButton = styled.input`
@@ -67,7 +71,7 @@ export const NavMenuButton = styled.button`
   border: 0.5px solid #e1dbdb50;
   border-radius: 50px;
   padding: 10px;
-  margin: 5px 15px;
+  margin: 5px;
   position: ${props => props.position || ''};
   z-index: ${props => props.zIndex || ''};
   background-color: #47425f90;

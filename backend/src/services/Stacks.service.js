@@ -1,13 +1,38 @@
-const  { Stack } = require('../database/models');
+const { Stack, Project } = require('../database/models');
 
 const getAllStacks = async () => {
-  const stacks = await Stack.findAll();
+  const stacks = await Stack.findAll({
+    include: [{
+      model: Project,
+      through: { attributes: [] },
+    }],
+  });
 
   if (!stacks) {
     return null;
   }
 
-  return stacks.map(stack => stack);
+  return stacks;
+};
+
+const findStackById = async (id) => {
+  const stack = await Stack.findByPk(
+    id,
+    {
+      include: [
+        {
+          model: Project,
+          through: { attributes: [] },
+        },
+      ],
+    },
+  );
+
+  if (!stack) {
+    return null;
+  }
+
+  return stack.dataValues;
 };
 
 const createStack = async (stack) => {
@@ -16,19 +41,6 @@ const createStack = async (stack) => {
     return null;
   }
   return newStack.dataValues;
-};
-
-const findStackById = async (id) => {
-  const stack = await Stack.findByPk(id);
-  let projects = await stack.getProjects();
-
-  projects = projects.map((project) => project.dataValues);
-
-  if (!stack) {
-    return null;
-  }
-
-  return { ...stack.dataValues, projects };
 };
 
 const updateStack = async (id, stack) => {
@@ -59,8 +71,8 @@ const deleteStack = async (id) => {
 
 module.exports = {
   getAllStacks,
-  createStack,
   findStackById,
+  createStack,
   updateStack,
   deleteStack,
 };

@@ -1,7 +1,12 @@
-const { Project } = require('../database/models');
+const { Project, Stack } = require('../database/models');
 
 const getAllProjects = async () => {
-  const projects = await Project.findAll();
+  const projects = await Project.findAll({
+    include: [{
+      model: Stack,
+      through: { attributes: [] },
+    }],
+  });
 
   if (!projects) {
     return null;
@@ -11,7 +16,17 @@ const getAllProjects = async () => {
 };
 
 const getProjectById = async (id) => {
-  const project = await Project.findByPk(Number(id));
+  const project = await Project.findByPk(
+    Number(id),
+    {
+      include: [
+        {
+          model: Project,
+          through: { attributes: [] },
+        }
+      ],
+    },
+  );
 
   if (!project) return null;
 

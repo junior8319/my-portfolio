@@ -39,7 +39,7 @@ export const FormDiv30 = styled.div`
 
 export const FormDiv25 = styled.div`
   border: none;
-  padding: 10px;
+  padding: 5px;
   border-radius: 10px;
   width: 22%;
   background-color: transparent;
@@ -50,7 +50,8 @@ export const FormDiv25 = styled.div`
   }
 
   @media (max-width: 650px) {
-    width: 95%;
+    width: 100%;
+    justify-content: center;
   }
 `;
 
@@ -61,5 +62,6 @@ export const FormContainer = styled.form`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 95%;
+  margin: auto;
+  width: 97.5%;
 `;

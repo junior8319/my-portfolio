@@ -5,7 +5,7 @@ export const FormDiv100 = styled.div`
   padding: ${ props => props.padding || '5px' };
   margin: ${ props => props.margin };
   border-radius: 10px;
-  width: 99%;
+  width: 95%;
   background-color: transparent;
   color: #e1dbdb90;
   display: flex;
@@ -64,4 +64,8 @@ export const FormContainer = styled.form`
   justify-content: center;
   margin: auto;
   width: 97.5%;
+
+  @media (max-width: 400px) {
+    width: 95%;
+  }
 `;

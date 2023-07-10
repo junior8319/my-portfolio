@@ -9,9 +9,11 @@ const Article = styled.article`
   flex-grow: 1;
 
   @media (max-width: 400px) {
+    width: 95%;
     align-self: center;
     margin: auto;
     justify-self: center;
+    padding: 2px;
   }
 `;
 

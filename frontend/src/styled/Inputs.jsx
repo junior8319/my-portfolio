@@ -4,12 +4,12 @@ import InputMask from 'react-input-mask';
 export const Input = styled(InputMask)`
   border: 0.5px solid #e1dbdb;
   font-size: 1rem;
-  padding: 5px 15px;
+  padding: 5px 10px;
   border-radius: 10px;
-  width: 90%;
+  width: 92.5%;
   background-color: #0000ff20;
   color: #e1dbdb90;
-  margin-left: 5px;
+  margin: auto;
   
   &:hover {
     background-color: #47425f;

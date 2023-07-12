@@ -26,7 +26,7 @@ export const NormalPicture = styled.img`
 `;
 
 export const CardPicture = styled.img`
-  width: 100px;
+  width: ${props => props.width || '100px'};
   background: none;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
@@ -40,4 +40,9 @@ export const CardPicture = styled.img`
     align-self: center;
     margin: 7.5px auto;
   }
+`;
+
+export const ProjectPicture = styled.img`
+  width: 100%;
+  border-radius: 5px;
 `;

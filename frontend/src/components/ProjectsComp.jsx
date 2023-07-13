@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { getProjects } from "../helpers/projectsApi";
 import Article from "../styled/Article";
 import Loading from "./Loading";
-import Content from "../styled/Content";
 import { Title2, Title3 } from "../styled/Titles";
 import { ProjectPicture } from "../styled/Pictures";
 import { SimpleP } from "../styled/Paragraphs";
 import businesFlow from '../assets/images/business-flow-920w.gif';
+import { Tag } from "../styled/Spans";
+import Link from "../styled/Link";
 
 const ProjectsComponent = () => {
   const [projects, setProjects] = useState([]);
@@ -28,17 +29,23 @@ const ProjectsComponent = () => {
 
   return (
     projects.map((project) =>
-      <Content key={project.id}>
+      <Article
+        key={project.id}
+        width={ '45%' }
+        maxHeight={ '90%' }
+      >
         <Article
-          margin={ '10px 0 5px 20px' }
+          width={ '90%' }
+          margin={ 'auto' }
           backgroundColor={ 'transparent' }
         >
           <Title2>{ project.title }</Title2>
         </Article>
         <Article
-          width={ '75%' }
+          width={ '90%' }
           margin={ 'auto' }
           backgroundColor={ 'transparent' }
+          textAlign={ 'center' }
         >
           <ProjectPicture
             src={ businesFlow }
@@ -47,18 +54,19 @@ const ProjectsComponent = () => {
         </Article>
 
         <Article
-          margin={ '0 0 10px 20px' }
-          width={ '85%' }
+          margin={ 'auto' }
+          width={ '90%' }
           backgroundColor={ 'transparent' }
         >
           <SimpleP>{ project.description }</SimpleP>
         </Article>
 
         <Article
-          margin={ '0 0 0 20px' }
+          margin={ 'auto' }
           backgroundColor={ 'transparent' }
-          width={ '85%' }
+          width={ '90%' }
           display={ 'flex' }
+          justifyContent={ 'baseline' }
         >
           <Title3>Data de início:</Title3>
           <SimpleP>
@@ -73,10 +81,11 @@ const ProjectsComponent = () => {
         </Article>
         
         <Article
-          margin={ '0 0 0 20px' }
+          margin={ 'auto' }
           backgroundColor={ 'transparent' }
-          width={ '85%' }
+          width={ '90%' }
           display={ 'flex' }
+          justifyContent={ 'baseline' }
         >
           <Title3>Data de conclusão:</Title3>
           <SimpleP>
@@ -90,10 +99,27 @@ const ProjectsComponent = () => {
         </Article>
 
         <Article
-          margin={ '0 0 0 20px' }
           backgroundColor={ 'transparent' }
-          width={ '85%' }
+          width={ '90%' }
+          margin={ 'auto' }
+        >
+          <Link
+            to={`${project.projectUrl}`}
+            target={ '_blank' }
+            rel={ 'noopener noreferrer' }
+          >
+            <Title3>
+              Clique aqui para visitar o projeto.
+            </Title3>
+          </Link>
+        </Article>
+
+        <Article
+          margin={ '0 auto 15px auto' }
+          backgroundColor={ 'transparent' }
+          width={ '90%' }
           display={ 'flex' }
+          justifyContent={ 'baseline' }
         >
           <Title3>Ferramentas usadas:</Title3>
           {
@@ -101,15 +127,15 @@ const ProjectsComponent = () => {
             ?
               project.Stacks
               .map((stack) => 
-                <SimpleP key={stack.id}>
+                <Tag key={stack.id}>
                   {stack.title}
-                </SimpleP>
+                </Tag>
               )
             :
               'Ferramentas não definidas.'
           }
         </Article>
-      </Content>
+      </Article>
     )
   );
 };

@@ -56,6 +56,7 @@ const Container = styled.section`
   top: 55px;
   border-radius: 10px;
   display: flex;
+  flex-wrap: ${props => props.flexWrap || 'wrap'};
   margin: 0 auto;
 
   article:hover {

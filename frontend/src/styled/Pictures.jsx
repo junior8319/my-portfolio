@@ -43,6 +43,9 @@ export const CardPicture = styled.img`
 `;
 
 export const ProjectPicture = styled.img`
-  width: 100%;
   border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  justify-self: center;
 `;

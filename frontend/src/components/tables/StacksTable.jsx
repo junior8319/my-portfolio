@@ -1,8 +1,6 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import StacksContext from '../../context/StacksContext';
-import StacksForm from '../forms/StacksForm';
-import { deleteStackRequest, getStacks, updateStackRequest } from '../../helpers/stacksApi';
-import { CancelButton, SaveButton } from '../../styled/Buttons';
+import { deleteStackRequest, getStacks } from '../../helpers/stacksApi';
 import {
   Col,
   ColBtnDiv,
@@ -18,42 +16,19 @@ import {
 import Link from '../../styled/Link';
 
 const StacksTable = () => {
-  const { mappedStacks, stack, isUpdating, setIsUpdating, setStack, setStacks } = useContext(StacksContext);
-  const [stackIdUpdating, setStackIdUpdating] = useState(null);
+  const { mappedStacks, setIsUpdating, setStack, setStacks } = useContext(StacksContext);
 
-  const selectToUpdate = (stack) => {
-    setStackIdUpdating(stack.id);
+  const selectToUpdate = (tableStack) => {
     setIsUpdating(true);
 
     setStack({
-      id: stack.id,
-      title: stack.title,
-      description: stack.description,
-      stackUrl: stack.stackUrl,
-      stackDocsUrl: stack.stackDocsUrl,
+      id: tableStack.id,
+      title: tableStack.title,
+      description: tableStack.description,
+      stackUrl: tableStack.stackUrl,
+      stackDocsUrl: tableStack.stackDocsUrl,
+      imageUrl: tableStack.imageUrl,
     });
-  };
-
-  const stopUpdating = () => {
-    setStackIdUpdating(null);
-    setIsUpdating(false);
-    
-    setStack({
-      id: '',
-      title: '',
-      description: '',
-      stackUrl: '',
-      stackDocsUrl: '',
-    });
-  };
-
-  const sendUpdateRequest = async (receivedId) => {
-    updateStackRequest(receivedId, stack)
-    .then(() => {
-      getStacks()
-      .then(response => setStacks(response));
-    });
-    stopUpdating();
   };
 
   if (!mappedStacks || mappedStacks.length === 0) return <h3>Sem ferramentas cadastradas</h3>
@@ -73,19 +48,19 @@ const StacksTable = () => {
         </TableHead>
         <TableBody>
           {
-            mappedStacks.map((stack) => {
+            mappedStacks.map((tableStack) => {
               const {
                 id,
                 title,
                 stackUrl,
                 stackDocsUrl,
-              } = stack;
+              } = tableStack;
 
-              let { createdAt, updatedAt } = stack;
+              let { createdAt, updatedAt } = tableStack;
               createdAt = new Date(createdAt).toLocaleDateString('pt-BR');
               updatedAt = new Date(updatedAt).toLocaleDateString('pt-BR');
 
-              if (!isUpdating || stackIdUpdating !== stack.id) {
+              
                 return (
                   <Row key={ `${id}#$%${title}` }>
                     <Col data-label='ID: '>{id}</Col>
@@ -119,7 +94,7 @@ const StacksTable = () => {
                     <Col data-label='Ações: '>
                       <ColBtnDiv>
                         <ColUpdateBtn
-                          onClick={() => selectToUpdate(stack)}
+                          onClick={() => selectToUpdate(tableStack)}
                         >
                           Alterar
                         </ColUpdateBtn>
@@ -127,7 +102,7 @@ const StacksTable = () => {
                       {/* <ColBtnDiv> */}
                         <ColDeleteBtn
                           onClick={
-                            () => deleteStackRequest(stack.id)
+                            () => deleteStackRequest(tableStack.id)
                             .then(() => {
                               getStacks().then(response => setStacks(response));
                             })
@@ -140,25 +115,6 @@ const StacksTable = () => {
 
                   </Row>
                 );
-              } else {
-                return (
-                  <Row key={ `${id}#$%${title}` }>
-                    <Col colSpan={7}>
-                      <StacksForm />
-                      <SaveButton
-                        type='button'
-                        value='Salvar'
-                        onClick={() => sendUpdateRequest(stackIdUpdating)}
-                      />
-                      <CancelButton
-                        type='button'
-                        value='Cancelar'
-                        onClick={() => stopUpdating()}
-                      />
-                    </Col>
-                  </Row>
-                );
-              }
             })
           }          
         </TableBody>

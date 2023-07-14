@@ -34,6 +34,7 @@ export const SaveButton = styled.input`
   width: 100px;
   background-color: #13890f;
   color: #e1dbdb;
+  text-align: center;
   
   &:hover {
     background-color: #e1dbdb;
@@ -44,10 +45,15 @@ export const SaveButton = styled.input`
     font-size: 0.7rem;
     width: 75px;
   }
+
+  @media (max-width: 400px) {
+    font-size: 0.6rem;
+  }
 `;
 
 export const CancelButton = styled.input`
   border: none;
+  text-align: center;
   font-weight: bold;
   font-size: 0.8rem;
   padding: 10px;
@@ -64,6 +70,10 @@ export const CancelButton = styled.input`
   @media (max-width: 1100px) {
     font-size: 0.7rem;
     width: 75px;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 0.6rem;
   }
 `;
 

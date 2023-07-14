@@ -6,7 +6,7 @@ const StacksContainer = styled.section`
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
-  margin: 0;
+  margin: 0 auto 10px auto;
 
   article:hover {
     background-color: #0000ff20;

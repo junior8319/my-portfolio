@@ -62,10 +62,20 @@ export const FormContainer = styled.form`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: end;
   margin: auto;
   width: 97.5%;
+  
+  * {
+    font-size: 1rem;
+  }
 
   @media (max-width: 400px) {
     width: 95%;
+    padding: 0;
+
+    * {
+      font-size: 0.8rem;
+    }
   }
 `;

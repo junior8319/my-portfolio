@@ -6,6 +6,7 @@ const StacksProvider = ({ children }) => {
   const [stacks, setStacks] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
   const [stack, setStack] = useState({
+    id: '',
     title: '',
     description: '',
     stackDocsUrl: '',

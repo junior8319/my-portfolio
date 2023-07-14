@@ -5,18 +5,27 @@ import StacksTable from '../components/tables/StacksTable';
 import Article from '../styled/Article';
 import Container from '../styled/Container';
 import { Title1 } from '../styled/Titles';
-import { useContext } from 'react';
-import StacksContext from '../context/StacksContext';
 
 const Administrator = () => {
-  const { isUpdating } = useContext(StacksContext);
   return (
     <>
       <NavBar />
       <Container>
-        <Article>
           <Title1>Administrador</Title1>
-          { !isUpdating && <StacksForm /> }
+        <Article
+          maxHeight="fit-content"
+          margin="5px auto"
+          width="95%"
+          padding="7.5px 0"
+          >
+          <StacksForm />
+        </Article>
+          
+        <Article
+          width="95%"
+          margin="5px auto"
+          padding="7.5px"
+        >
           <StacksTable />
         </Article>
       </Container>

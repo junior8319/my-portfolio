@@ -10,11 +10,10 @@ const ControlBar = styled.nav`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 0;
+  margin: 5px auto;
 
   @media (max-width: 400px) {
     align-self: center;
-    margin: auto;
     justify-self: center;
   }
 `;

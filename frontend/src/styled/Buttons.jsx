@@ -48,6 +48,7 @@ export const SaveButton = styled.input`
 
   @media (max-width: 400px) {
     font-size: 0.6rem;
+    width: 60px;
   }
 `;
 

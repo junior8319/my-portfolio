@@ -13,6 +13,12 @@ export const TableContainer = styled.section`
   * {
     font-size: 0.80rem;
   }
+
+  @media (max-width: 400px) {
+    * {
+      font-size: 0.70rem;
+    }
+  }
 `;
 
 export const Table = styled.table`
@@ -101,6 +107,11 @@ export const ColUpdateBtn = styled.button`
     margin: auto;
   }
 
+  @media (max-width: 400px) {
+    font-size: 0.70rem;
+    width: 80px;
+  }
+
   &:hover {
     background-color: #e1dbdb;
     color: #bc6412;
@@ -119,6 +130,11 @@ export const ColDeleteBtn = styled.button`
     font-size: 0.80rem;
     width: 100px;
     margin: auto;
+  }
+
+  @media (max-width: 400px) {
+    font-size: 0.70rem;
+    width: 80px;
   }
 
   &:hover {

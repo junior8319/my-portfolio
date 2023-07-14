@@ -58,6 +58,7 @@ const Container = styled.section`
   display: flex;
   flex-wrap: ${props => props.flexWrap || 'wrap'};
   margin: 0 auto;
+  max-height: ${props => props.maxHeight || '95%'};
 
   article:hover {
     background-color: #0000ff20;

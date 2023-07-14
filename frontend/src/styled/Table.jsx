@@ -9,6 +9,10 @@ export const TableContainer = styled.section`
   margin: auto;
   margin-top: 5px;
   overflow-y: scroll;
+
+  * {
+    font-size: 0.80rem;
+  }
 `;
 
 export const Table = styled.table`
@@ -19,6 +23,10 @@ export const Table = styled.table`
 
 export const TableHead = styled.thead`
   width: 95%;
+  
+  * {
+    font-size: 1rem;
+  }
 
   @media (max-width: 1100px) {
     display: none;

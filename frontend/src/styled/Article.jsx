@@ -16,9 +16,10 @@ const Article = styled.article`
   @media (max-width: 400px) {
     width: 95%;
     align-self: center;
-    margin: auto;
+    margin: ${ props => props.margin || 'auto' };
+    max-height: ${ props => props.maxHeight || '90%' };
     justify-self: center;
-    padding: 2px;
+    padding: ${ props => props.padding || '2px' };
   }
 `;
 

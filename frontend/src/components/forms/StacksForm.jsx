@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import StacksContext from '../../context/StacksContext';
-import { requestStackRegister } from '../../helpers/stacksApi';
-import { SaveButton } from '../../styled/Buttons';
+import { getStacks, requestStackRegister, updateStackRequest } from '../../helpers/stacksApi';
+import { CancelButton, SaveButton } from '../../styled/Buttons';
 import { Input, TextArea } from '../../styled/Inputs';
 import { Label } from '../../styled/Labels';
 import { FormContainer, FormDiv100, FormDiv25 } from '../../styled/Form';
@@ -11,19 +11,37 @@ const StacksForm = () => {
     stacks,
     stack,
     isUpdating,
+    setIsUpdating,
     setStacks,
     setStack,
   } = useContext(StacksContext);
+  
   const initialStack = ({
+    id: '',
     title: '',
     description: '',
     stackDocsUrl: '',
     imageUrl: '',
     stackUrl: '',
-  })
+  });
 
   const handleChange = ({ target: { name, value } }) => {
     setStack({ ...stack, [name]: value });
+  };
+
+  const stopUpdating = () => {
+    setIsUpdating(false);
+    
+    setStack(initialStack);
+  };
+
+  const sendUpdateRequest = async (receivedId) => {
+    updateStackRequest(receivedId, stack)
+    .then(() => {
+      getStacks()
+      .then(response => setStacks(response));
+    });
+    stopUpdating();
   };
 
   return (
@@ -101,18 +119,34 @@ const StacksForm = () => {
 
       <FormDiv100>
         {
-          !isUpdating && (
-            <SaveButton
-              type="button"
-              value="Salvar"
-              onClick={ () => {
-                requestStackRegister(stack)
-                  .then((data) => {
-                    setStacks([...stacks, data])
-                    setStack(initialStack);
-                });
-              }}
-            />
+          !isUpdating
+          ? (
+              <SaveButton
+                type="button"
+                value="Salvar"
+                onClick={ () => {
+                  requestStackRegister(stack)
+                    .then((data) => {
+                      setStacks([...stacks, data])
+                      setStack(initialStack);
+                  });
+                }}
+              />
+            )
+          : ( 
+            <>
+              <SaveButton
+                type="button"
+                value="Alterar"
+                onClick={() => sendUpdateRequest(stack.id)}
+              />
+              
+              <CancelButton
+                type="button"
+                value="Cancelar"
+                onClick={() => stopUpdating()}
+              />
+            </>
           )
         }
       </FormDiv100>

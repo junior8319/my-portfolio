@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import StacksContext from '../../context/StacksContext';
+import StacksContext from '../../context/Contexts';
 import { getStacks, requestStackRegister, updateStackRequest } from '../../helpers/stacksApi';
 import { CancelButton, SaveButton } from '../../styled/Buttons';
 import { Input, TextArea } from '../../styled/Inputs';
 import { Label } from '../../styled/Labels';
 import { FormContainer, FormDiv100, FormDiv25 } from '../../styled/Form';
+import { Title2 } from '../../styled/Titles';
 
 const StacksForm = () => {
   const {
@@ -46,6 +47,7 @@ const StacksForm = () => {
 
   return (
     <FormContainer action="POST">
+      <Title2>Cadastro de Habilidades e Ferramentas</Title2>
       <FormDiv25>
         <Label htmlFor="input-title">
           Título:

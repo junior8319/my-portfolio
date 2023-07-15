@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import StacksContext from '../../context/StacksContext';
+import StacksContext from '../../context/Contexts';
 import { deleteStackRequest, getStacks } from '../../helpers/stacksApi';
 import {
   Col,

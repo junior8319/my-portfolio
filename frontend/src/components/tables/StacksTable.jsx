@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import StacksContext from '../../context/Contexts';
+import { StacksContext } from '../../context/Contexts';
 import { deleteStackRequest, getStacks } from '../../helpers/stacksApi';
 import {
   Col,
@@ -14,6 +14,7 @@ import {
   TableHead
 } from '../../styled/Table';
 import Link from '../../styled/Link';
+import { Title3 } from '../../styled/Titles';
 
 const StacksTable = () => {
   const { mappedStacks, setIsUpdating, setStack, setStacks } = useContext(StacksContext);
@@ -31,7 +32,7 @@ const StacksTable = () => {
     });
   };
 
-  if (!mappedStacks || mappedStacks.length === 0) return <h3>Sem ferramentas cadastradas</h3>
+  if (!mappedStacks || mappedStacks.length === 0) return <Title3>Sem ferramentas cadastradas</Title3>
   return (
     <TableContainer>
       <Table>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getStacks } from '../helpers/stacksApi';
-import StacksContext from './StacksContext';
+import { StacksContext } from './Contexts';
 
 const StacksProvider = ({ children }) => {
   const [stacks, setStacks] = useState([]);

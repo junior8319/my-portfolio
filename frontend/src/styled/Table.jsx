@@ -100,6 +100,7 @@ export const ColUpdateBtn = styled.button`
   background-color: #bc6412;
   border-radius: 5px;
   font-weight: bold;
+  text-align: center;
 
   @media (max-width: 1100px) {
     font-size: 0.80rem;
@@ -125,6 +126,7 @@ export const ColDeleteBtn = styled.button`
   background-color: #89250f;
   border-radius: 5px;
   font-weight: bold;
+  text-align: center;
 
   @media (max-width: 1100px) {
     font-size: 0.80rem;

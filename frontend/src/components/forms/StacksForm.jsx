@@ -111,9 +111,10 @@ const StacksForm = () => {
           </Label>
 
           <TextArea
-            type="textarea" id="description-input"
+            type="textarea"
+            id="description-input"
             cols={ 30 }
-            rows={ 3 }
+            rows={ 6 }
             value={ stack.description }
             name="description"
             onChange={handleChange}

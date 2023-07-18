@@ -4,6 +4,7 @@ import { Title3 } from '../../styled/Titles';
 import { Col, ColBtnDiv, ColDeleteBtn, ColUpdateBtn, HeadCol, Row, Table, TableBody, TableContainer, TableHead } from '../../styled/Table';
 import NavLink from '../../styled/Link';
 import { getProjects, requestProjectDelete } from '../../helpers/projectsApi';
+import { handleDateCompatibility } from '../../helpers/handleCompatibility';
 
 const ProjectsTable = () => {
   const {
@@ -22,8 +23,8 @@ const ProjectsTable = () => {
       description: tableProject.description,
       projectUrl: tableProject.projectUrl,
       snapshot: tableProject.snapshot,
-      startDate: tableProject.startDate,
-      finishDate: tableProject.finishDate,
+      startDate: handleDateCompatibility(tableProject.startDate),
+      finishDate: handleDateCompatibility(tableProject.finishDate),
     });
   };
 

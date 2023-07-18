@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const ControlButton = styled.button`
+  background-color: #0000ff20;
   border: none;
   font-weight: bold;
   padding: 10px;
   border-radius: 10px;
   width: 20%;
-  background-color: #0000ff20;
   color: #b9d6f4;
+  text-align: center;
 
   &:hover {
     background-color: #b9d6f4;
@@ -31,7 +32,7 @@ export const SaveButton = styled.input`
   font-size: 0.8rem;
   padding: 10px;
   border-radius: 10px;
-  width: 100px;
+  width: 150px;
   background-color: #13890f;
   color: #e1dbdb;
   text-align: center;
@@ -43,7 +44,7 @@ export const SaveButton = styled.input`
 
   @media (max-width: 1100px) {
     font-size: 0.7rem;
-    width: 75px;
+    width: 100px;
   }
 
   @media (max-width: 400px) {
@@ -59,7 +60,7 @@ export const CancelButton = styled.input`
   font-size: 0.8rem;
   padding: 10px;
   border-radius: 10px;
-  width: 100px;
+  width: 150px;
   background-color: #89250f60;
   color: #e1dbdb90;
   
@@ -70,11 +71,12 @@ export const CancelButton = styled.input`
 
   @media (max-width: 1100px) {
     font-size: 0.7rem;
-    width: 75px;
+    width: 100px;
   }
 
   @media (max-width: 400px) {
     font-size: 0.6rem;
+    width: 80px;
   }
 `;
 
@@ -86,6 +88,7 @@ export const NavMenuButton = styled.button`
   position: ${props => props.position || ''};
   z-index: ${props => props.zIndex || ''};
   background-color: #47425f90;
+  text-align: center;
 
   @media (min-width: 501px) {
     display: none;

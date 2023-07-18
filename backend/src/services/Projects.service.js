@@ -21,7 +21,7 @@ const getProjectById = async (id) => {
     {
       include: [
         {
-          model: Project,
+          model: Stack,
           through: { attributes: [] },
         }
       ],

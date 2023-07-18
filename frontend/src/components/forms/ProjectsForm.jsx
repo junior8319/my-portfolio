@@ -1,11 +1,11 @@
-import { useContext } from "react";
-import { ProjectsContext } from "../../context/Contexts";
-import { getProjects, requestProjectRegister, requestProjectUpdate } from "../../helpers/projectsApi";
-import { FormContainer, FormDiv100, FormDiv25 } from "../../styled/Form";
-import { Title2 } from "../../styled/Titles";
-import { Label } from "../../styled/Labels";
-import { Input } from "../../styled/Inputs";
-import { CancelButton, SaveButton } from "../../styled/Buttons";
+import { useContext } from 'react';
+import { ProjectsContext } from '../../context/Contexts';
+import { getProjects, requestProjectRegister, requestProjectUpdate } from '../../helpers/projectsApi';
+import { FormContainer, FormDiv100, FormDiv25 } from '../../styled/Form';
+import { Title2 } from '../../styled/Titles';
+import { Label } from '../../styled/Labels';
+import { Input, TextArea } from '../../styled/Inputs';
+import { CancelButton, SaveButton } from '../../styled/Buttons';
 
 const ProjectsForm = () => {
   const {
@@ -23,18 +23,12 @@ const ProjectsForm = () => {
     description: '',
     projectUrl: '',
     snapshot: '',
-    startDate: new Date().toLocaleDateString("pt-BR"),
-    finishDate: new Date().toLocaleDateString("pt-BR"),
+    startDate: '',
+    finishDate: '',
   });
 
   const handleChange = ({ target: { name, value } }) => {
     setProject({ ...project, [name]: value });
-  };
-
-  const handleDateChange = ({ target: { name, value } }) => {
-    const brazilianDateFormat = value.split('/').reverse().join('-');
-    value = brazilianDateFormat;
-    setProject({ ...project, [name]: brazilianDateFormat });
   };
 
   const stopUpdating = () => {
@@ -118,7 +112,7 @@ const ProjectsForm = () => {
             name="startDate"
             type="date"
             value={ project.startDate }
-            onChange={ (event) => handleDateChange(event) }
+            onChange={ (event) => handleChange(event) }
           />
         </FormDiv25>
 
@@ -132,7 +126,7 @@ const ProjectsForm = () => {
             name="finishDate"
             type= "date"
             value={ project.finishDate }
-            onChange={ (event) => handleDateChange(event) }
+            onChange={ (event) => handleChange(event) }
           />
         </FormDiv25>
 
@@ -142,10 +136,12 @@ const ProjectsForm = () => {
             Descrição:
           </Label>
 
-          <Input
+          <TextArea
+            type="textarea"
             id="input-description"
             name="description"
-            type="text"
+            cols={ 30 }
+            rows={ 6 }
             value={project.description}
             onChange={ handleChange }
           />

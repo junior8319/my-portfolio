@@ -57,7 +57,7 @@ const ProjectsTable = () => {
             finishDate = new Date(finishDate).toLocaleDateString("pt-BR");
 
             return (
-              <Row key={id}>
+              <Row key={`${id}#$%${title}`}>
                 <Col data-label='ID: '>{id}</Col>
                 <Col data-label='Título: '>{title}</Col>
                 <Col data-label='URL: '>

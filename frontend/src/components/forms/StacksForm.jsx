@@ -18,7 +18,6 @@ const StacksForm = () => {
   } = useContext(StacksContext);
   
   const initialStack = ({
-    id: '',
     title: '',
     description: '',
     stackDocsUrl: '',

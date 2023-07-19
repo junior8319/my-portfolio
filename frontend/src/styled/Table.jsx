@@ -62,10 +62,10 @@ export const Col = styled.td`
 
   @media (max-width: 1100px) {
     display: block;
+    text-align: justify;
 
     &::before {
       content: attr(data-label);
-      float: left;
     }
   }
 

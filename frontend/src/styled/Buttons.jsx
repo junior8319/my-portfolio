@@ -29,10 +29,10 @@ export const ControlButton = styled.button`
 export const SaveButton = styled.input`
   border: none;
   font-weight: bold;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 10px;
   border-radius: 10px;
-  width: 150px;
+  width: 180px;
   background-color: #13890f;
   color: #e1dbdb;
   text-align: center;
@@ -43,13 +43,13 @@ export const SaveButton = styled.input`
   }
 
   @media (max-width: 1100px) {
-    font-size: 0.7rem;
-    width: 100px;
+    font-size: 0.8rem;
+    width: 120px;
   }
 
   @media (max-width: 400px) {
-    font-size: 0.6rem;
-    width: 60px;
+    font-size: 0.7rem;
+    width: 90px;
   }
 `;
 

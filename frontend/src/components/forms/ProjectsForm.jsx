@@ -9,7 +9,6 @@ import { CancelButton, SaveButton } from '../../styled/Buttons';
 
 const ProjectsForm = () => {
   const {
-    projects,
     project,
     isUpdating,
     setIsUpdating,
@@ -18,7 +17,6 @@ const ProjectsForm = () => {
   } = useContext(ProjectsContext);
 
   const initialProject = ({
-    id: '',
     title: '',
     description: '',
     projectUrl: '',
@@ -41,7 +39,9 @@ const ProjectsForm = () => {
     requestProjectRegister(project)
     .then(() => {
       getProjects()
-      .then(response => setProjects([...projects, response]));
+      .then(response => {
+        setProjects(response);
+      });
     });
     stopUpdating();
   };
@@ -50,7 +50,7 @@ const ProjectsForm = () => {
     requestProjectUpdate(receivedId, project)
     .then(() => {
       getProjects()
-      .then(response => setProjects([...projects, response]));
+      .then(response => setProjects(response));
     });
     stopUpdating();
   };

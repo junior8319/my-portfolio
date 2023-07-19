@@ -6,7 +6,6 @@ const ProjectsProvider = ({ children }) => {
   const [projects, setProjects] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
   const [project, setProject] = useState({
-    id: '',
     title: '',
     description: '',
     snapshot: '',

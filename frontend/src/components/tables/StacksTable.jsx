@@ -88,9 +88,9 @@ const StacksTable = () => {
                       </Link>
                     </Col>
 
-                    <Col>{createdAt}</Col>
+                    <Col data-label='Cadastrada em: '>{createdAt}</Col>
 
-                    <Col>{updatedAt}</Col>
+                    <Col data-label='Última alteração: '>{updatedAt}</Col>
 
                     <Col data-label='Ações: '>
                       <ColBtnDiv>
@@ -99,8 +99,7 @@ const StacksTable = () => {
                         >
                           Alterar
                         </ColUpdateBtn>
-                      {/* </ColBtnDiv> */}
-                      {/* <ColBtnDiv> */}
+
                         <ColDeleteBtn
                           onClick={
                             () => deleteStackRequest(tableStack.id)

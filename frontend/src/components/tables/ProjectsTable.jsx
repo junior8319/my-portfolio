@@ -4,11 +4,11 @@ import { Title3 } from '../../styled/Titles';
 import { Col, ColBtnDiv, ColDeleteBtn, ColUpdateBtn, HeadCol, Row, Table, TableBody, TableContainer, TableHead } from '../../styled/Table';
 import NavLink from '../../styled/Link';
 import { getProjects, requestProjectDelete } from '../../helpers/projectsApi';
-import { handleDateCompatibility } from '../../helpers/handleCompatibility';
+import { handleDateCompatibility, handleTimeZoneCompatibility } from '../../helpers/handleCompatibility';
 
 const ProjectsTable = () => {
   const {
-    mappedProjects,
+    projects,
     setIsUpdating,
     setProject,
     setProjects,
@@ -28,7 +28,7 @@ const ProjectsTable = () => {
     });
   };
 
-  if (!mappedProjects || mappedProjects.length === 0)
+  if (!projects || projects.length === 0)
     return <Title3>Sem projetos cadastrados</Title3>;
 
   return (
@@ -45,7 +45,7 @@ const ProjectsTable = () => {
           </Row>
         </TableHead>
         <TableBody>
-          { mappedProjects.map((tableProject) => {
+          { projects.map((tableProject) => {
             const {
               id,
               title,
@@ -53,8 +53,8 @@ const ProjectsTable = () => {
             } = tableProject;
 
             let { startDate, finishDate } = tableProject;
-            startDate = new Date(startDate).toLocaleDateString("pt-BR");
-            finishDate = new Date(finishDate).toLocaleDateString("pt-BR");
+            startDate = handleTimeZoneCompatibility(startDate);
+            finishDate = handleTimeZoneCompatibility(finishDate);
 
             return (
               <Row key={`${id}#$%${title}`}>

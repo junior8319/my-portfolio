@@ -1,4 +1,3 @@
-
 export const handleDateCompatibility = (date) => {
   date = new Date(date);
   const year = date.getFullYear();

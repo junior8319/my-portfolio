@@ -107,7 +107,9 @@ const ContactMe = () => {
     <>
       <NavBar />
       <Container>
-        <Article>
+        <Article
+          maxHeight={ 'fit-content' }
+        >
           <Title1>Contato</Title1>
 
           <FormContainer>

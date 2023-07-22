@@ -24,7 +24,9 @@ const Stacks = () => {
   }
 
   return (
-    <Article>
+    <Article
+      maxHeight="fit-content"
+    >
       <Title1>Ferramentas que conheço:</Title1>
       <Carousel cards={ stacks } intervalTime={ 30000 } />
     </Article>

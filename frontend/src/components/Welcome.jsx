@@ -7,6 +7,7 @@ const Welcome = () => {
   return (
     <Article
       margin={ "10px auto" }
+      maxHeight={ "fit-content" }
     >
       <Title1>Boas vindas ao meu portfólio,</Title1>
       <SimpleP>Sou desenvolvedor web full-stack em formação e aqui procuro desenvolver e demonstrar minhas habilidades.</SimpleP>
